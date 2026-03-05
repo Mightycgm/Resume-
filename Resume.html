@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Thai:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <style>
         /* ═══════════════════════════════════════════════
            DESIGN SYSTEM — CSS Variables
@@ -478,26 +479,77 @@
             font-size: 0.95rem;
             font-weight: 700;
         }
-        .skill-tags {
+        .skill-icons {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+            gap: 10px;
+        }
+        .skill-icon-item {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             gap: 6px;
-        }
-        .skill-tag {
-            display: inline-block;
-            padding: 5px 12px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            background: var(--badge-bg);
-            border: 1px solid var(--badge-border);
-            color: var(--text-primary);
+            padding: 14px 6px;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            background: var(--bg-secondary);
             transition: all var(--transition-fast);
+            cursor: default;
         }
-        .skill-tag:hover {
-            background: var(--badge-hover-bg);
-            border-color: var(--badge-hover-border);
+        .skill-icon-item:hover {
+            border-color: var(--accent);
+            background: var(--accent-soft);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px var(--accent-glow);
+        }
+        .skill-icon-item i,
+        .skill-icon-item img {
+            font-size: 2rem;
+            width: 2rem;
+            height: 2rem;
+            object-fit: contain;
+            transition: transform var(--transition-fast);
+        }
+        .skill-icon-item:hover i,
+        .skill-icon-item:hover img {
+            transform: scale(1.15);
+        }
+        .skill-icon-item span {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-align: center;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+        .skill-icon-item:hover span {
             color: var(--accent);
+        }
+        /* Dark mode icon inversion for single-color icons */
+        body.dark-mode .skill-icon-item .icon-invert {
+            filter: invert(1);
+        }
+        @media (max-width: 480px) {
+            .skill-icons {
+                grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+                gap: 8px;
+            }
+            .skill-icon-item {
+                padding: 10px 4px;
+            }
+            .skill-icon-item i,
+            .skill-icon-item img {
+                font-size: 1.6rem;
+                width: 1.6rem;
+                height: 1.6rem;
+            }
+            .skill-icon-item span {
+                font-size: 0.58rem;
+            }
         }
 
         /* ═══════════════════════════════════════════════
@@ -838,7 +890,7 @@
                     <p class="summary" data-th="นักศึกษาชั้นปีที่ 3 สายงาน IT ที่มีความมุ่งมั่น กำลังมองหาโอกาสสหกิจศึกษา เพื่อนำทักษะ Full-stack Web Development, การจัดการฐานข้อมูล และ Linux มาประยุกต์ใช้จริง พร้อมเรียนรู้เทคโนโลยีใหม่ ๆ และสนับสนุนทีมอย่างเต็มที่" data-en="A dedicated 3rd-year IT student seeking a Cooperative Education opportunity to apply Full-stack Web Development, database management, and Linux skills in a professional environment. Eager to learn modern technologies and contribute effectively to a development team.">นักศึกษาชั้นปีที่ 3 สายงาน IT ที่มีความมุ่งมั่น กำลังมองหาโอกาสสหกิจศึกษา เพื่อนำทักษะ Full-stack Web Development, การจัดการฐานข้อมูล และ Linux มาประยุกต์ใช้จริง พร้อมเรียนรู้เทคโนโลยีใหม่ ๆ และสนับสนุนทีมอย่างเต็มที่</p>
                     <div class="hero-actions">
                         <a href="https://github.com/Mightycgm" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="mailto:Nachasil.naken03@gmail.com" class="btn btn-outline" data-th="<i class='fas fa-envelope'></i> ติดต่อฉัน" data-en="<i class='fas fa-envelope'></i> Contact Me"><i class='fas fa-envelope'></i> ติดต่อฉัน</a>
+                        <a href="https://mail.google.com/mail/?view=cm&to=Nachasil.naken03@gmail.com" target="_blank" class="btn btn-outline" data-th="<i class='fas fa-envelope'></i> ติดต่อฉัน" data-en="<i class='fas fa-envelope'></i> Contact Me"><i class='fas fa-envelope'></i> ติดต่อฉัน</a>
                     </div>
                 </div>
             </div>
@@ -886,14 +938,14 @@
                         <div class="skill-card-icon"><i class="fas fa-code"></i></div>
                         <h4 data-th="ภาษาโปรแกรม" data-en="Programming Languages">ภาษาโปรแกรม</h4>
                     </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">HTML5</span>
-                        <span class="skill-tag">CSS3</span>
-                        <span class="skill-tag">JavaScript (ES6+)</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">C#</span>
-                        <span class="skill-tag">PHP</span>
+                    <div class="skill-icons">
+                        <div class="skill-icon-item"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
+                        <div class="skill-icon-item"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div>
+                        <div class="skill-icon-item"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
+                        <div class="skill-icon-item"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+                        <div class="skill-icon-item"><i class="devicon-java-plain colored"></i><span>Java</span></div>
+                        <div class="skill-icon-item"><i class="devicon-csharp-plain colored"></i><span>C#</span></div>
+                        <div class="skill-icon-item"><i class="devicon-php-plain colored"></i><span>PHP</span></div>
                     </div>
                 </div>
                 <!-- Frameworks -->
@@ -902,23 +954,23 @@
                         <div class="skill-card-icon"><i class="fas fa-layer-group"></i></div>
                         <h4 data-th="เฟรมเวิร์ก & ไลบรารี" data-en="Frameworks & Libraries">เฟรมเวิร์ก & ไลบรารี</h4>
                     </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Next.js</span>
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">Django</span>
-                        <span class="skill-tag">Bootstrap 5</span>
+                    <div class="skill-icons">
+                        <div class="skill-icon-item"><i class="devicon-nextjs-plain icon-invert"></i><span>Next.js</span></div>
+                        <div class="skill-icon-item"><i class="devicon-react-original colored"></i><span>React</span></div>
+                        <div class="skill-icon-item"><i class="devicon-django-plain icon-invert"></i><span>Django</span></div>
+                        <div class="skill-icon-item"><i class="devicon-bootstrap-plain colored"></i><span>Bootstrap</span></div>
                     </div>
                 </div>
-                <!-- Databases & Tools -->
+                <!-- Databases -->
                 <div class="skill-card">
                     <div class="skill-card-header">
                         <div class="skill-card-icon"><i class="fas fa-database"></i></div>
                         <h4 data-th="ฐานข้อมูล" data-en="Databases">ฐานข้อมูล</h4>
                     </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">SQL Server</span>
-                        <span class="skill-tag">Firebase</span>
+                    <div class="skill-icons">
+                        <div class="skill-icon-item"><i class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
+                        <div class="skill-icon-item"><i class="devicon-microsoftsqlserver-plain colored"></i><span>SQL Server</span></div>
+                        <div class="skill-icon-item"><i class="devicon-firebase-plain colored"></i><span>Firebase</span></div>
                     </div>
                 </div>
                 <!-- Tools & OS -->
@@ -927,11 +979,13 @@
                         <div class="skill-card-icon"><i class="fas fa-terminal"></i></div>
                         <h4 data-th="เครื่องมือ & ระบบ" data-en="Tools & Systems">เครื่องมือ & ระบบ</h4>
                     </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Git / GitHub</span>
-                        <span class="skill-tag">VS Code</span>
-                        <span class="skill-tag">Linux (Arch, Ubuntu)</span>
-                        <span class="skill-tag">Unity Engine</span>
+                    <div class="skill-icons">
+                        <div class="skill-icon-item"><i class="devicon-git-plain colored"></i><span>Git</span></div>
+                        <div class="skill-icon-item"><i class="devicon-github-original icon-invert"></i><span>GitHub</span></div>
+                        <div class="skill-icon-item"><i class="devicon-vscode-plain colored"></i><span>VS Code</span></div>
+                        <div class="skill-icon-item"><i class="devicon-archlinux-plain colored"></i><span>Arch Linux</span></div>
+                        <div class="skill-icon-item"><i class="devicon-ubuntu-plain colored"></i><span>Ubuntu</span></div>
+                        <div class="skill-icon-item"><i class="devicon-unity-plain icon-invert"></i><span>Unity</span></div>
                     </div>
                 </div>
                 <!-- Design -->
@@ -940,9 +994,9 @@
                         <div class="skill-card-icon"><i class="fas fa-palette"></i></div>
                         <h4 data-th="การออกแบบ" data-en="Design">การออกแบบ</h4>
                     </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Infographic</span>
-                        <span class="skill-tag" data-th="การออกแบบ UI เบื้องต้น" data-en="Basic UI Design">การออกแบบ UI เบื้องต้น</span>
+                    <div class="skill-icons">
+                        <div class="skill-icon-item"><i class="fas fa-chart-pie" style="color: var(--accent);"></i><span>Infographic</span></div>
+                        <div class="skill-icon-item"><i class="devicon-figma-plain colored"></i><span>UI Design</span></div>
                     </div>
                 </div>
             </div>
