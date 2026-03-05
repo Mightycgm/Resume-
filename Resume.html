@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nachasil Naken | Resume</title>
+    <meta name="description" content="Resume of Nachasil Naken — Full-stack Web Development Intern Candidate">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Thai:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ═══════════════════════════════════════════════
+           DESIGN SYSTEM — CSS Variables
+           ═══════════════════════════════════════════════ */
+        :root {
+            /* Primary (Light Mode) */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f7f7f8;
+            --text-primary: #0a0a0a;
+            --text-secondary: #555555;
+            --text-muted: #888888;
+
+            /* Secondary (Blood Red) — ไม่เปลี่ยนตามธีม */
+            --accent: #8B0000;
+            --accent-hover: #6d0000;
+            --accent-glow: rgba(139, 0, 0, 0.15);
+            --accent-soft: rgba(139, 0, 0, 0.08);
+
+            /* Surfaces */
+            --card-bg: #ffffff;
+            --card-border: #e8e8e8;
+            --card-shadow: 0 2px 16px rgba(0,0,0,0.06);
+            --card-shadow-hover: 0 8px 32px rgba(0,0,0,0.12);
+
+            /* Navbar */
+            --nav-bg: rgba(255,255,255,0.82);
+            --nav-border: rgba(0,0,0,0.06);
+
+            /* Timeline */
+            --timeline-line: #ddd;
+            --timeline-dot-bg: #ffffff;
+
+            /* Misc */
+            --divider: #e0e0e0;
+            --badge-bg: transparent;
+            --badge-border: #d0d0d0;
+            --badge-hover-bg: var(--accent-soft);
+            --badge-hover-border: var(--accent);
+            --progress-track: #e8e8e8;
+
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.35s ease;
+            --transition-slow: 0.5s ease;
+        }
+
+        /* ═══════════════════════════════════════════════
+           DARK MODE — สลับสีหลัก, สีรองคงเดิม
+           ═══════════════════════════════════════════════ */
+        body.dark-mode {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --text-primary: #f0f0f0;
+            --text-secondary: #aaaaaa;
+            --text-muted: #777777;
+
+            --card-bg: #161616;
+            --card-border: #2a2a2a;
+            --card-shadow: 0 2px 16px rgba(0,0,0,0.3);
+            --card-shadow-hover: 0 8px 32px rgba(0,0,0,0.5);
+
+            --nav-bg: rgba(10,10,10,0.88);
+            --nav-border: rgba(255,255,255,0.06);
+
+            --timeline-line: #333;
+            --timeline-dot-bg: #161616;
+
+            --divider: #2a2a2a;
+            --badge-border: #444;
+            --progress-track: #2a2a2a;
+        }
+
+        /* ═══════════════════════════════════════════════
+           BASE & TYPOGRAPHY
+           ═══════════════════════════════════════════════ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Noto Sans Thai', 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            transition: background-color var(--transition-normal), color var(--transition-normal);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', 'Noto Sans Thai', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent);
+            transition: color var(--transition-fast);
+        }
+        a:hover {
+            color: var(--accent-hover);
+        }
+
+        ::selection {
+            background-color: var(--accent);
+            color: #fff;
+        }
+
+        /* ═══════════════════════════════════════════════
+           CONTAINER
+           ═══════════════════════════════════════════════ */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ═══════════════════════════════════════════════
+           NAVBAR — Glassmorphism
+           ═══════════════════════════════════════════════ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--nav-border);
+            transition: background var(--transition-normal), border-color var(--transition-normal);
+        }
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        .navbar-brand {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: 1.35rem;
+            color: var(--accent) !important;
+            letter-spacing: -0.5px;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-primary);
+            font-size: 0.88rem;
+            font-weight: 500;
+            padding: 6px 14px;
+            border-radius: 8px;
+            transition: background var(--transition-fast), color var(--transition-fast);
+        }
+        .nav-links a:hover {
+            background: var(--accent-soft);
+            color: var(--accent);
+        }
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .toggle-btn {
+            background: transparent;
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+            font-family: 'Inter', sans-serif;
+        }
+        .toggle-btn:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        /* Mobile nav */
+        .mobile-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle { display: block; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: var(--nav-bg);
+                backdrop-filter: blur(16px);
+                flex-direction: column;
+                padding: 16px 24px;
+                border-bottom: 1px solid var(--nav-border);
+                gap: 4px;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a {
+                padding: 12px 16px;
+                width: 100%;
+                border-radius: 10px;
+            }
+        }
+
+        /* ═══════════════════════════════════════════════
+           HERO SECTION
+           ═══════════════════════════════════════════════ */
+        .hero {
+            padding: 120px 0 60px;
+            position: relative;
+        }
+        .hero-inner {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+        }
+        .hero-img-wrap {
+            flex-shrink: 0;
+            position: relative;
+        }
+        .hero-img-wrap::before {
+            content: '';
+            position: absolute;
+            top: -8px; left: -8px; right: -8px; bottom: -8px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            opacity: 0.3;
+            animation: pulse-ring 3s ease-in-out infinite;
+        }
+        @keyframes pulse-ring {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.05); opacity: 0.1; }
+        }
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            box-shadow: 0 0 40px var(--accent-glow);
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+        .profile-img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 60px rgba(139, 0, 0, 0.3);
+        }
+        .hero-text {
+            flex: 1;
+        }
+        .hero-text h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+        .hero-text .subtitle {
+            font-size: 1.15rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .hero-text .summary {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 520px;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 100px 0 40px; }
+            .hero-inner {
+                flex-direction: column;
+                text-align: center;
+                gap: 32px;
+            }
+            .hero-text h1 { font-size: 2rem; }
+            .hero-text .summary { max-width: 100%; }
+            .hero-actions { justify-content: center; }
+        }
+
+        /* ═══════════════════════════════════════════════
+           CONTACT BAR
+           ═══════════════════════════════════════════════ */
+        .contact-bar {
+            background: var(--bg-secondary);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 20px 28px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-bottom: 48px;
+            transition: background var(--transition-normal), border-color var(--transition-normal);
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            transition: color var(--transition-fast);
+        }
+        .contact-item i {
+            color: var(--accent);
+            font-size: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+        .contact-item a {
+            color: var(--text-secondary);
+        }
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 600px) {
+            .contact-bar {
+                flex-direction: column;
+                gap: 12px;
+                padding: 16px 20px;
+            }
+        }
+
+        /* ═══════════════════════════════════════════════
+           BUTTONS
+           ═══════════════════════════════════════════════ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            font-family: 'Inter', 'Noto Sans Thai', sans-serif;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            border: none;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            color: #fff;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px var(--accent-glow);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1.5px solid var(--card-border);
+        }
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-soft);
+        }
+        .btn-sm {
+            padding: 7px 16px;
+            font-size: 0.82rem;
+        }
+
+        /* ═══════════════════════════════════════════════
+           SECTIONS
+           ═══════════════════════════════════════════════ */
+        .section {
+            padding: 56px 0;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 36px;
+        }
+        .section-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--accent);
+            min-width: 32px;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: var(--divider);
+            transition: background var(--transition-normal);
+        }
+
+        /* ═══════════════════════════════════════════════
+           SKILLS SECTION
+           ═══════════════════════════════════════════════ */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .skill-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 24px;
+            transition: all var(--transition-normal);
+        }
+        .skill-card:hover {
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-3px);
+            border-color: var(--accent);
+        }
+        .skill-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .skill-card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        .skill-card h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .skill-tag {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            background: var(--badge-bg);
+            border: 1px solid var(--badge-border);
+            color: var(--text-primary);
+            transition: all var(--transition-fast);
+        }
+        .skill-tag:hover {
+            background: var(--badge-hover-bg);
+            border-color: var(--badge-hover-border);
+            color: var(--accent);
+        }
+
+        /* ═══════════════════════════════════════════════
+           PROJECT CARDS
+           ═══════════════════════════════════════════════ */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+            transition: all var(--transition-normal);
+        }
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition-normal);
+        }
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+        .project-card:hover {
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-4px);
+        }
+        .project-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+        .project-role {
+            display: inline-block;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 6px;
+            margin-bottom: 14px;
+        }
+        .project-desc {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 18px;
+        }
+        .project-tech span {
+            font-size: 0.73rem;
+            padding: 3px 10px;
+            background: var(--bg-secondary);
+            border-radius: 6px;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: background var(--transition-normal);
+        }
+
+        /* ═══════════════════════════════════════════════
+           TIMELINE (Experience & Education)
+           ═══════════════════════════════════════════════ */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+        @media (max-width: 768px) {
+            .two-columns { grid-template-columns: 1fr; gap: 48px; }
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 28px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: var(--timeline-line);
+            transition: background var(--transition-normal);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 32px;
+        }
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            background: var(--timeline-dot-bg);
+            transition: background var(--transition-normal);
+            z-index: 1;
+        }
+        .timeline-item h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .timeline-meta {
+            font-size: 0.82rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .timeline-item ul {
+            padding-left: 18px;
+            margin: 0;
+        }
+        .timeline-item li {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            line-height: 1.6;
+        }
+        .gpax-badge {
+            display: inline-block;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 6px;
+            margin-left: 4px;
+        }
+
+        /* ═══════════════════════════════════════════════
+           OTHER SKILLS SECTION
+           ═══════════════════════════════════════════════ */
+        .other-skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        @media (max-width: 768px) {
+            .other-skills-grid { grid-template-columns: 1fr; }
+        }
+        .lang-skill {
+            margin-bottom: 18px;
+        }
+        .lang-skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+        .lang-skill-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .lang-skill-level {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .progress-bar {
+            height: 6px;
+            background: var(--progress-track);
+            border-radius: 3px;
+            overflow: hidden;
+            transition: background var(--transition-normal);
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 3px;
+            transition: width 1s ease;
+        }
+
+        .soft-skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .soft-skill-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+        }
+        .soft-skill-item i {
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+        .soft-skill-item:hover {
+            border-color: var(--accent);
+            background: var(--accent-soft);
+            transform: translateY(-2px);
+        }
+
+        /* ═══════════════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════════════ */
+        .footer {
+            text-align: center;
+            padding: 36px 24px;
+            border-top: 2px solid var(--accent);
+            margin-top: 32px;
+            background: var(--bg-secondary);
+            transition: background var(--transition-normal), border-color var(--transition-normal);
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .footer-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            transition: all var(--transition-fast);
+        }
+        .footer-links a:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        .footer p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin: 4px 0;
+        }
+
+        /* ═══════════════════════════════════════════════
+           SCROLL ANIMATIONS
+           ═══════════════════════════════════════════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger children */
+        .stagger-children > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .stagger-children.visible > *:nth-child(1) { transition-delay: 0.05s; }
+        .stagger-children.visible > *:nth-child(2) { transition-delay: 0.10s; }
+        .stagger-children.visible > *:nth-child(3) { transition-delay: 0.15s; }
+        .stagger-children.visible > *:nth-child(4) { transition-delay: 0.20s; }
+        .stagger-children.visible > *:nth-child(5) { transition-delay: 0.25s; }
+        .stagger-children.visible > *:nth-child(6) { transition-delay: 0.30s; }
+        .stagger-children.visible > * {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .stagger-children.visible > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ═══════════════════════════════════════════════
+           UTILITY
+           ═══════════════════════════════════════════════ */
+        .text-accent { color: var(--accent) !important; }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════════════
+         NAVBAR
+         ═══════════════════════════════════════════════ -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#">NACHASIL NAKEN</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about" data-th="เกี่ยวกับฉัน" data-en="About">เกี่ยวกับฉัน</a></li>
+                <li><a href="#skills" data-th="ทักษะ" data-en="Skills">ทักษะ</a></li>
+                <li><a href="#projects" data-th="ผลงาน" data-en="Projects">ผลงาน</a></li>
+                <li><a href="#experience" data-th="ประสบการณ์" data-en="Experience">ประสบการณ์</a></li>
+                <li><a href="#other-skills" data-th="ทักษะอื่น ๆ" data-en="Other Skills">ทักษะอื่น ๆ</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button class="toggle-btn" id="lang-toggle" title="Switch Language">EN</button>
+                <button class="toggle-btn" id="theme-toggle" title="Toggle Theme"><i class="fas fa-moon"></i></button>
+                <button class="mobile-toggle" id="mobile-menu" aria-label="Menu"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════
+         HERO SECTION
+         ═══════════════════════════════════════════════ -->
+    <section class="hero" id="about">
+        <div class="container">
+            <div class="hero-inner reveal">
+                <div class="hero-img-wrap">
+                    <!-- ✏️ แก้ไข src ด้านล่างเพื่อใส่รูปภาพของคุณ -->
+                    <img src="/Resume/USER.jpg" alt="Nachasil Naken" class="profile-img" id="profile-image">
+                </div>
+                <div class="hero-text">
+                    <h1 data-th="ณชาศิลป์ <span class='text-accent'>นาเคณฑ์</span>" data-en="Nachasil <span class='text-accent'>Naken</span>">ณชาศิลป์ <span class="text-accent">นาเคณฑ์</span></h1>
+                    <p class="subtitle" data-th="ผู้สมัครฝึกงาน Full-stack Web Development" data-en="Full-stack Web Development Intern Candidate">ผู้สมัครฝึกงาน Full-stack Web Development</p>
+                    <p class="summary" data-th="นักศึกษาชั้นปีที่ 3 สายงาน IT ที่มีความมุ่งมั่น กำลังมองหาโอกาสสหกิจศึกษา เพื่อนำทักษะ Full-stack Web Development, การจัดการฐานข้อมูล และ Linux มาประยุกต์ใช้จริง พร้อมเรียนรู้เทคโนโลยีใหม่ ๆ และสนับสนุนทีมอย่างเต็มที่" data-en="A dedicated 3rd-year IT student seeking a Cooperative Education opportunity to apply Full-stack Web Development, database management, and Linux skills in a professional environment. Eager to learn modern technologies and contribute effectively to a development team.">นักศึกษาชั้นปีที่ 3 สายงาน IT ที่มีความมุ่งมั่น กำลังมองหาโอกาสสหกิจศึกษา เพื่อนำทักษะ Full-stack Web Development, การจัดการฐานข้อมูล และ Linux มาประยุกต์ใช้จริง พร้อมเรียนรู้เทคโนโลยีใหม่ ๆ และสนับสนุนทีมอย่างเต็มที่</p>
+                    <div class="hero-actions">
+                        <a href="https://github.com/Mightycgm" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="mailto:Nachasil.naken03@gmail.com" class="btn btn-outline" data-th="<i class='fas fa-envelope'></i> ติดต่อฉัน" data-en="<i class='fas fa-envelope'></i> Contact Me"><i class='fas fa-envelope'></i> ติดต่อฉัน</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         CONTACT BAR
+         ═══════════════════════════════════════════════ -->
+    <div class="container">
+        <div class="contact-bar reveal">
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>062-394-8480</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:Nachasil.naken03@gmail.com">Nachasil.naken03@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-github"></i>
+                <a href="https://github.com/Mightycgm" target="_blank">github.com/Mightycgm</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span data-th="ซอยวิภาวดีรังสิต 60 หลักสี่ กรุงเทพฯ 10210" data-en="Vibhavadi Rangsit 60, Lak Si, Bangkok 10210">ซอยวิภาวดีรังสิต 60 หลักสี่ กรุงเทพฯ 10210</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         SKILLS SECTION
+         ═══════════════════════════════════════════════ -->
+    <section class="section" id="skills">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-number">01</span>
+                <h2 class="section-title" data-th="ทักษะ & ความเชี่ยวชาญ" data-en="Skills & Expertise">ทักษะ & ความเชี่ยวชาญ</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="skills-grid stagger-children reveal">
+                <!-- Programming Languages -->
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <div class="skill-card-icon"><i class="fas fa-code"></i></div>
+                        <h4 data-th="ภาษาโปรแกรม" data-en="Programming Languages">ภาษาโปรแกรม</h4>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript (ES6+)</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">PHP</span>
+                    </div>
+                </div>
+                <!-- Frameworks -->
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <div class="skill-card-icon"><i class="fas fa-layer-group"></i></div>
+                        <h4 data-th="เฟรมเวิร์ก & ไลบรารี" data-en="Frameworks & Libraries">เฟรมเวิร์ก & ไลบรารี</h4>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Next.js</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">Bootstrap 5</span>
+                    </div>
+                </div>
+                <!-- Databases & Tools -->
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <div class="skill-card-icon"><i class="fas fa-database"></i></div>
+                        <h4 data-th="ฐานข้อมูล" data-en="Databases">ฐานข้อมูล</h4>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">SQL Server</span>
+                        <span class="skill-tag">Firebase</span>
+                    </div>
+                </div>
+                <!-- Tools & OS -->
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <div class="skill-card-icon"><i class="fas fa-terminal"></i></div>
+                        <h4 data-th="เครื่องมือ & ระบบ" data-en="Tools & Systems">เครื่องมือ & ระบบ</h4>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git / GitHub</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Linux (Arch, Ubuntu)</span>
+                        <span class="skill-tag">Unity Engine</span>
+                    </div>
+                </div>
+                <!-- Design -->
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <div class="skill-card-icon"><i class="fas fa-palette"></i></div>
+                        <h4 data-th="การออกแบบ" data-en="Design">การออกแบบ</h4>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Infographic</span>
+                        <span class="skill-tag" data-th="การออกแบบ UI เบื้องต้น" data-en="Basic UI Design">การออกแบบ UI เบื้องต้น</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         PROJECTS SECTION
+         ═══════════════════════════════════════════════ -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-number">02</span>
+                <h2 class="section-title" data-th="โปรเจกต์ที่ภาคภูมิใจ" data-en="Academic Projects">โปรเจกต์ที่ภาคภูมิใจ</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card reveal">
+                    <h4 data-th="Web Application รีวิวเกม" data-en="Game Review Web App">Web Application รีวิวเกม</h4>
+                    <span class="project-role">Full-stack Developer</span>
+                    <p class="project-desc" data-th="ออกแบบและพัฒนาเว็บแอปพลิเคชัน Responsive สำหรับจัดการเนื้อหารีวิวเกม สร้าง UI ที่เป็นระบบและรองรับทุกอุปกรณ์" data-en="Designed and developed a fully responsive web application for game content management with a structured UI that works seamlessly across all devices.">ออกแบบและพัฒนาเว็บแอปพลิเคชัน Responsive สำหรับจัดการเนื้อหารีวิวเกม สร้าง UI ที่เป็นระบบและรองรับทุกอุปกรณ์</p>
+                    <div class="project-tech">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>Bootstrap 5</span>
+                    </div>
+                    <a href="https://github.com/Mightycgm/Project-SPU-12267" target="_blank" class="btn btn-primary btn-sm"><i class="fab fa-github"></i> <span data-th="ดูโค้ด" data-en="View Code">ดูโค้ด</span></a>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card reveal">
+                    <h4>Out Of The Box <span style="font-weight:400; font-size:0.85rem; color:var(--text-muted);">(Puzzle Game)</span></h4>
+                    <span class="project-role">Solo Game Developer</span>
+                    <p class="project-desc" data-th="พัฒนา Gameplay Logic ที่ซับซ้อนและออกแบบด่านปริศนา บริหารจัดการโปรเจกต์ตั้งแต่ออกแบบจนถึง Testing" data-en="Engineered complex gameplay mechanics and puzzle logic. Managed the entire development lifecycle from design through testing.">พัฒนา Gameplay Logic ที่ซับซ้อนและออกแบบด่านปริศนา บริหารจัดการโปรเจกต์ตั้งแต่ออกแบบจนถึง Testing</p>
+                    <div class="project-tech">
+                        <span>Unity Engine</span>
+                        <span>C#</span>
+                    </div>
+                    <a href="https://github.com/Mightycgm/Puzzle-Out-Of-The-Box" target="_blank" class="btn btn-primary btn-sm"><i class="fab fa-github"></i> <span data-th="ดูโค้ด" data-en="View Code">ดูโค้ด</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         EXPERIENCE & EDUCATION (Two Columns + Timeline)
+         ═══════════════════════════════════════════════ -->
+    <section class="section" id="experience">
+        <div class="container">
+            <div class="two-columns">
+                <!-- LEFT: Experience -->
+                <div>
+                    <div class="section-header reveal">
+                        <span class="section-number">03</span>
+                        <h2 class="section-title" data-th="ประสบการณ์" data-en="Experience">ประสบการณ์</h2>
+                        <div class="section-line"></div>
+                    </div>
+                    <div class="timeline reveal">
+                        <div class="timeline-item">
+                            <h4 data-th="นักศึกษาฝึกงานด้านไอที" data-en="IT Technician Intern">นักศึกษาฝึกงานด้านไอที</h4>
+                            <p class="timeline-meta" data-th="Com & Print Service | เม.ย. – พ.ค. 2567" data-en="Com & Print Service | Apr – May 2024">Com & Print Service | เม.ย. – พ.ค. 2567</p>
+                            <ul>
+                                <li data-th="วิเคราะห์และแก้ไขปัญหาฮาร์ดแวร์คอมพิวเตอร์และโน้ตบุ๊ค" data-en="Diagnosed and resolved hardware issues for laptops and desktops">วิเคราะห์และแก้ไขปัญหาฮาร์ดแวร์คอมพิวเตอร์และโน้ตบุ๊ค</li>
+                                <li data-th="ให้คำปรึกษาทางเทคนิคและนำเสนออุปกรณ์ไอทีที่เหมาะสม" data-en="Provided technical consultations and product recommendations">ให้คำปรึกษาทางเทคนิคและนำเสนออุปกรณ์ไอทีที่เหมาะสม</li>
+                                <li data-th="บริหารจัดการสต็อกและประสานงานภายในร้าน" data-en="Managed inventory and streamlined internal operations">บริหารจัดการสต็อกและประสานงานภายในร้าน</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 data-th="นักศึกษาฝึกงานด้านสื่อและธุรการ" data-en="Multimedia & Administrative Intern">นักศึกษาฝึกงานด้านสื่อและธุรการ</h4>
+                            <p class="timeline-meta" data-th="ศูนย์วิทยาศาสตร์เพื่อการศึกษาตรัง | พ.ค. – ก.ย. 2565" data-en="Trang Science Centre | May – Sep 2022">ศูนย์วิทยาศาสตร์เพื่อการศึกษาตรัง | พ.ค. – ก.ย. 2565</p>
+                            <ul>
+                                <li data-th="สร้างสรรค์สื่อ Infographic สรุปเนื้อหาวิทยาศาสตร์" data-en="Created educational infographics to summarize scientific content">สร้างสรรค์สื่อ Infographic สรุปเนื้อหาวิทยาศาสตร์</li>
+                                <li data-th="สนับสนุนงานเอกสารและประสานงานนิทรรศการ" data-en="Supported administrative tasks and coordinated exhibitions">สนับสนุนงานเอกสารและประสานงานนิทรรศการ</li>
+                                <li data-th="ดูแลและอำนวยความสะดวกแก่นักเรียนที่เยี่ยมชม" data-en="Assisted visiting students during learning activities">ดูแลและอำนวยความสะดวกแก่นักเรียนที่เยี่ยมชม</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Education -->
+                <div>
+                    <div class="section-header reveal">
+                        <span class="section-number">04</span>
+                        <h2 class="section-title" data-th="การศึกษา" data-en="Education">การศึกษา</h2>
+                        <div class="section-line"></div>
+                    </div>
+                    <div class="timeline reveal">
+                        <div class="timeline-item">
+                            <h4 data-th="ปริญญาตรี เทคโนโลยีสารสนเทศ" data-en="B.S. Information Technology">ปริญญาตรี เทคโนโลยีสารสนเทศ</h4>
+                            <p class="timeline-meta" data-th="มหาวิทยาลัยศรีปทุม | คาดว่าจบปี 2570" data-en="Sripatum University | Expected 2027">มหาวิทยาลัยศรีปทุม | คาดว่าจบปี 2570</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 data-th="ปวส. เทคโนโลยีสารสนเทศ" data-en="High Vocational Certificate (IT)">ปวส. เทคโนโลยีสารสนเทศ</h4>
+                            <p class="timeline-meta" data-th="วิทยาลัยอาชีวศึกษาธนบุรี" data-en="Thonburi Vocational College">วิทยาลัยอาชีวศึกษาธนบุรี</p>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary);">GPAX <span class="gpax-badge">3.75</span></p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 data-th="ปวช. คอมพิวเตอร์ธุรกิจ" data-en="Vocational Certificate (Business Computer)">ปวช. คอมพิวเตอร์ธุรกิจ</h4>
+                            <p class="timeline-meta" data-th="วิทยาลัยเทคนิคตรัง" data-en="Trang Technical College">วิทยาลัยเทคนิคตรัง</p>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary);">GPAX <span class="gpax-badge">3.69</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         OTHER SKILLS (Languages + Soft Skills)
+         ═══════════════════════════════════════════════ -->
+    <section class="section" id="other-skills">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-number">05</span>
+                <h2 class="section-title" data-th="ทักษะอื่น ๆ" data-en="Other Skills">ทักษะอื่น ๆ</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="other-skills-grid reveal">
+                <!-- Language Skills -->
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <div class="skill-card-icon"><i class="fas fa-language"></i></div>
+                        <h4 data-th="ทักษะทางภาษา" data-en="Language Skills">ทักษะทางภาษา</h4>
+                    </div>
+                    <div class="lang-skill">
+                        <div class="lang-skill-header">
+                            <span class="lang-skill-name" data-th="ภาษาไทย" data-en="Thai">ภาษาไทย</span>
+                            <span class="lang-skill-level">Native</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="lang-skill">
+                        <div class="lang-skill-header">
+                            <span class="lang-skill-name" data-th="ภาษาอังกฤษ" data-en="English">ภาษาอังกฤษ</span>
+                            <span class="lang-skill-level" data-th="สื่อสารได้" data-en="Communicative">สื่อสารได้</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 55%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Soft Skills -->
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <div class="skill-card-icon"><i class="fas fa-users"></i></div>
+                        <h4>Soft Skills</h4>
+                    </div>
+                    <div class="soft-skills-list">
+                        <div class="soft-skill-item">
+                            <i class="fas fa-bolt"></i>
+                            <span data-th="เรียนรู้ไว" data-en="Fast Learner">เรียนรู้ไว</span>
+                        </div>
+                        <div class="soft-skill-item">
+                            <i class="fas fa-people-group"></i>
+                            <span data-th="ทำงานเป็นทีม" data-en="Teamwork">ทำงานเป็นทีม</span>
+                        </div>
+                        <div class="soft-skill-item">
+                            <i class="fas fa-comments"></i>
+                            <span data-th="สื่อสารดี" data-en="Communication">สื่อสารดี</span>
+                        </div>
+                        <div class="soft-skill-item">
+                            <i class="fas fa-seedling"></i>
+                            <span data-th="ใฝ่เรียนรู้ & พัฒนา" data-en="Growth Mindset">ใฝ่เรียนรู้ & พัฒนา</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════════════ -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="https://github.com/Mightycgm" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="mailto:Nachasil.naken03@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:0623948480" title="Phone"><i class="fas fa-phone"></i></a>
+        </div>
+        <p>© 2026 Nachasil Naken</p>
+        <p data-th="สร้างด้วย HTML, CSS & JavaScript" data-en="Built with HTML, CSS & JavaScript">สร้างด้วย HTML, CSS & JavaScript</p>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════════
+         SCRIPTS
+         ═══════════════════════════════════════════════ -->
+    <script>
+        // ──────────────────────────────────
+        // Theme Toggle
+        // ──────────────────────────────────
+        const themeToggle = document.getElementById('theme-toggle');
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            themeToggle.innerHTML = isDark
+                ? '<i class="fas fa-sun"></i>'
+                : '<i class="fas fa-moon"></i>';
+        });
+
+        // ──────────────────────────────────
+        // Language Toggle
+        // ──────────────────────────────────
+        const langToggle = document.getElementById('lang-toggle');
+        let currentLang = 'th';
+
+        langToggle.addEventListener('click', () => {
+            currentLang = currentLang === 'th' ? 'en' : 'th';
+            langToggle.textContent = currentLang === 'th' ? 'EN' : 'TH';
+
+            document.querySelectorAll('[data-th][data-en]').forEach(el => {
+                el.innerHTML = el.getAttribute(`data-${currentLang}`);
+            });
+        });
+
+        // ──────────────────────────────────
+        // Mobile Menu Toggle
+        // ──────────────────────────────────
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // ──────────────────────────────────
+        // Scroll Reveal Animations
+        // ──────────────────────────────────
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // ──────────────────────────────────
+        // Navbar active link on scroll
+        // ──────────────────────────────────
+        const sections = document.querySelectorAll('section[id], .hero');
+        const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navAnchors.forEach(a => {
+                a.style.background = '';
+                a.style.color = '';
+                if (a.getAttribute('href') === `#${current}`) {
+                    a.style.background = 'var(--accent-soft)';
+                    a.style.color = 'var(--accent)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
