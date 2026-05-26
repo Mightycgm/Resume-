@@ -1,90 +1,69 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nachasil Naken | Resume</title>
-    <meta name="description" content="Resume of Nachasil Naken — Full-stack Web Development Intern Candidate">
+    <title>Nachasil Naken | Full-Stack Developer</title>
+    <meta name="description" content="Nachasil Naken — Full-Stack Web Developer & IT Student. Skilled in React, Next.js, Python, Django, MySQL, and Linux. Open to internship & cooperative education opportunities.">
+    <meta name="keywords" content="Full-Stack Developer, Web Developer, React, Next.js, Python, IT Student, Thailand">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Thai:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
     <style>
-        /* ═══════════════════════════════════════════════
-           DESIGN SYSTEM — CSS Variables
-           ═══════════════════════════════════════════════ */
+        /* ═══════════════════════════════════════════════════════
+           DESIGN TOKENS
+        ═══════════════════════════════════════════════════════ */
         :root {
-            /* Primary (Light Mode) */
-            --bg-primary: #ffffff;
-            --bg-secondary: #f7f7f8;
-            --text-primary: #0a0a0a;
-            --text-secondary: #555555;
-            --text-muted: #888888;
+            --bg-base:       #050b12;
+            --bg-surface:    #080f18;
+            --bg-card:       #0c1520;
+            --bg-card-hover: #101c2a;
 
-            /* Secondary (Blood Red) — ไม่เปลี่ยนตามธีม */
-            --accent: #8B0000;
-            --accent-hover: #6d0000;
-            --accent-glow: rgba(139, 0, 0, 0.15);
-            --accent-soft: rgba(139, 0, 0, 0.08);
+            --cyan:          #00e5ff;
+            --cyan-dim:      #00b8cc;
+            --cyan-glow:     rgba(0, 229, 255, 0.15);
+            --cyan-glow-sm:  rgba(0, 229, 255, 0.08);
+            --cyan-border:   rgba(0, 229, 255, 0.25);
 
-            /* Surfaces */
-            --card-bg: #ffffff;
-            --card-border: #e8e8e8;
-            --card-shadow: 0 2px 16px rgba(0,0,0,0.06);
-            --card-shadow-hover: 0 8px 32px rgba(0,0,0,0.12);
+            --purple:        #7c3aed;
+            --purple-glow:   rgba(124, 58, 237, 0.2);
 
-            /* Navbar */
-            --nav-bg: rgba(255,255,255,0.82);
-            --nav-border: rgba(0,0,0,0.06);
+            --green:         #00ff88;
+            --green-dim:     rgba(0, 255, 136, 0.7);
 
-            /* Timeline */
-            --timeline-line: #ddd;
-            --timeline-dot-bg: #ffffff;
+            --text-primary:  #e8f4f8;
+            --text-secondary:#8da8bc;
+            --text-muted:    #4a6275;
+            --text-code:     #00e5ff;
 
-            /* Misc */
-            --divider: #e0e0e0;
-            --badge-bg: transparent;
-            --badge-border: #d0d0d0;
-            --badge-hover-bg: var(--accent-soft);
-            --badge-hover-border: var(--accent);
-            --progress-track: #e8e8e8;
+            --border:        rgba(0, 229, 255, 0.1);
+            --border-hover:  rgba(0, 229, 255, 0.35);
+            --border-card:   rgba(255, 255, 255, 0.06);
 
-            /* Transitions */
-            --transition-fast: 0.2s ease;
+            --nav-bg:        rgba(5, 11, 18, 0.85);
+
+            --transition-fast:   0.18s ease;
             --transition-normal: 0.35s ease;
-            --transition-slow: 0.5s ease;
+            --transition-slow:   0.6s ease;
+
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+
+            --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+            --font-sans: 'Inter', 'Noto Sans Thai', sans-serif;
         }
 
-        /* ═══════════════════════════════════════════════
-           DARK MODE — สลับสีหลัก, สีรองคงเดิม
-           ═══════════════════════════════════════════════ */
-        body.dark-mode {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #111111;
-            --text-primary: #f0f0f0;
-            --text-secondary: #aaaaaa;
-            --text-muted: #777777;
-
-            --card-bg: #161616;
-            --card-border: #2a2a2a;
-            --card-shadow: 0 2px 16px rgba(0,0,0,0.3);
-            --card-shadow-hover: 0 8px 32px rgba(0,0,0,0.5);
-
-            --nav-bg: rgba(10,10,10,0.88);
-            --nav-border: rgba(255,255,255,0.06);
-
-            --timeline-line: #333;
-            --timeline-dot-bg: #161616;
-
-            --divider: #2a2a2a;
-            --badge-border: #444;
-            --progress-track: #2a2a2a;
-        }
-
-        /* ═══════════════════════════════════════════════
-           BASE & TYPOGRAPHY
-           ═══════════════════════════════════════════════ */
+        /* ═══════════════════════════════════════════════════════
+           BASE RESET
+        ═══════════════════════════════════════════════════════ */
         *, *::before, *::after {
             margin: 0;
             padding: 0;
@@ -93,519 +72,735 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 80px;
+            scroll-padding-top: 72px;
         }
 
         body {
-            font-family: 'Noto Sans Thai', 'Inter', sans-serif;
-            background-color: var(--bg-primary);
+            font-family: var(--font-sans);
+            background-color: var(--bg-base);
             color: var(--text-primary);
             line-height: 1.7;
-            transition: background-color var(--transition-normal), color var(--transition-normal);
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Inter', 'Noto Sans Thai', sans-serif;
+            font-family: var(--font-sans);
             font-weight: 700;
-            line-height: 1.3;
+            line-height: 1.25;
         }
 
         a {
             text-decoration: none;
-            color: var(--accent);
+            color: var(--cyan);
             transition: color var(--transition-fast);
         }
-        a:hover {
-            color: var(--accent-hover);
-        }
+        a:hover { color: #fff; }
 
         ::selection {
-            background-color: var(--accent);
-            color: #fff;
+            background: var(--cyan);
+            color: var(--bg-base);
         }
 
-        /* ═══════════════════════════════════════════════
+        /* ═══════════════════════════════════════════════════════
+           ANIMATED GRID BACKGROUND
+        ═══════════════════════════════════════════════════════ */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 50vh;
+            background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0,229,255,0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ═══════════════════════════════════════════════════════
            CONTAINER
-           ═══════════════════════════════════════════════ */
+        ═══════════════════════════════════════════════════════ */
         .container {
-            max-width: 960px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 24px;
+            position: relative;
+            z-index: 1;
         }
 
-        /* ═══════════════════════════════════════════════
-           NAVBAR — Glassmorphism
-           ═══════════════════════════════════════════════ */
+        /* ═══════════════════════════════════════════════════════
+           NAVBAR
+        ═══════════════════════════════════════════════════════ */
         .navbar {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 1000;
             background: var(--nav-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--nav-border);
-            transition: background var(--transition-normal), border-color var(--transition-normal);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: background var(--transition-normal);
         }
+
         .navbar .container {
             display: flex;
             align-items: center;
             justify-content: space-between;
             height: 64px;
         }
+
         .navbar-brand {
-            font-family: 'Inter', sans-serif;
-            font-weight: 900;
-            font-size: 1.35rem;
-            color: var(--accent) !important;
-            letter-spacing: -0.5px;
-        }
-        .nav-links {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--cyan) !important;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
             display: flex;
             align-items: center;
             gap: 8px;
-            list-style: none;
         }
-        .nav-links a {
-            color: var(--text-primary);
-            font-size: 0.88rem;
-            font-weight: 500;
-            padding: 6px 14px;
-            border-radius: 8px;
-            transition: background var(--transition-fast), color var(--transition-fast);
+        .navbar-brand .brand-prefix {
+            color: var(--text-muted);
+            font-weight: 400;
         }
-        .nav-links a:hover {
-            background: var(--accent-soft);
-            color: var(--accent);
+        .navbar-brand .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background: var(--cyan);
+            animation: blink 1.1s step-end infinite;
+            margin-left: 2px;
+            vertical-align: middle;
         }
-        .nav-controls {
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .nav-links {
             display: flex;
             align-items: center;
             gap: 4px;
+            list-style: none;
         }
-        .toggle-btn {
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            font-weight: 500;
+            font-family: var(--font-mono);
+            padding: 6px 14px;
+            border-radius: var(--radius-sm);
+            border: 1px solid transparent;
+            letter-spacing: 0.03em;
+            transition: all var(--transition-fast);
+            position: relative;
+        }
+        .nav-links a::before {
+            content: './';
+            color: var(--cyan);
+            font-size: 0.75rem;
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+            margin-right: 1px;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--cyan);
+            background: var(--cyan-glow-sm);
+            border-color: var(--border);
+        }
+        .nav-links a:hover::before,
+        .nav-links a.active::before {
+            opacity: 1;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-btn {
             background: transparent;
-            border: 1px solid var(--card-border);
-            color: var(--text-primary);
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-sm);
             cursor: pointer;
-            font-size: 0.95rem;
-            font-weight: 700;
+            font-size: 0.85rem;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all var(--transition-fast);
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-mono);
         }
-        .toggle-btn:hover {
-            background: var(--accent);
-            color: #fff;
-            border-color: var(--accent);
+        .nav-btn:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+            background: var(--cyan-glow-sm);
+            box-shadow: 0 0 12px var(--cyan-glow);
         }
 
-        /* Mobile nav */
         .mobile-toggle {
             display: none;
             background: transparent;
-            border: none;
-            color: var(--text-primary);
-            font-size: 1.3rem;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-sm);
             cursor: pointer;
-            padding: 4px;
+            font-size: 1rem;
+            align-items: center;
+            justify-content: center;
         }
 
         @media (max-width: 768px) {
-            .mobile-toggle { display: block; }
+            .mobile-toggle { display: flex; }
             .nav-links {
                 display: none;
                 position: absolute;
                 top: 64px;
-                left: 0;
-                right: 0;
-                background: var(--nav-bg);
-                backdrop-filter: blur(16px);
+                left: 0; right: 0;
+                background: rgba(5, 11, 18, 0.97);
+                backdrop-filter: blur(20px);
                 flex-direction: column;
-                padding: 16px 24px;
-                border-bottom: 1px solid var(--nav-border);
+                align-items: stretch;
+                padding: 12px 20px 20px;
+                border-bottom: 1px solid var(--border);
                 gap: 4px;
             }
-            .nav-links.active { display: flex; }
-            .nav-links a {
-                padding: 12px 16px;
-                width: 100%;
-                border-radius: 10px;
-            }
+            .nav-links.open { display: flex; }
+            .nav-links a { padding: 12px 16px; border-radius: var(--radius-sm); }
         }
 
-        /* ═══════════════════════════════════════════════
-           HERO SECTION
-           ═══════════════════════════════════════════════ */
+        /* ═══════════════════════════════════════════════════════
+           HERO
+        ═══════════════════════════════════════════════════════ */
         .hero {
-            padding: 120px 0 60px;
+            padding: 130px 0 72px;
             position: relative;
         }
+
         .hero-inner {
-            display: flex;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 56px;
             align-items: center;
-            gap: 48px;
         }
-        .hero-img-wrap {
-            flex-shrink: 0;
+
+        /* Profile image */
+        .profile-wrap {
             position: relative;
+            flex-shrink: 0;
         }
-        .hero-img-wrap::before {
+        .profile-hex {
+            position: relative;
+            width: 180px;
+            height: 180px;
+        }
+        .profile-hex::before,
+        .profile-hex::after {
             content: '';
             position: absolute;
-            top: -8px; left: -8px; right: -8px; bottom: -8px;
             border-radius: 50%;
-            border: 2px solid var(--accent);
-            opacity: 0.3;
-            animation: pulse-ring 3s ease-in-out infinite;
+            animation: rotate-ring 8s linear infinite;
         }
-        @keyframes pulse-ring {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.05); opacity: 0.1; }
+        .profile-hex::before {
+            inset: -10px;
+            border: 1.5px solid transparent;
+            border-top-color: var(--cyan);
+            border-right-color: var(--cyan);
+            opacity: 0.6;
+        }
+        .profile-hex::after {
+            inset: -18px;
+            border: 1px solid transparent;
+            border-bottom-color: var(--purple);
+            border-left-color: var(--purple);
+            opacity: 0.4;
+            animation-direction: reverse;
+            animation-duration: 12s;
+        }
+        @keyframes rotate-ring {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
         }
         .profile-img {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--accent);
-            box-shadow: 0 0 40px var(--accent-glow);
-            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+            border: 2px solid var(--cyan);
+            box-shadow:
+                0 0 0 6px rgba(0,229,255,0.07),
+                0 0 40px rgba(0,229,255,0.2),
+                0 0 80px rgba(0,229,255,0.08);
+            display: block;
+            position: relative;
+            z-index: 1;
+            transition: box-shadow var(--transition-normal), transform var(--transition-normal);
         }
         .profile-img:hover {
             transform: scale(1.03);
-            box-shadow: 0 0 60px rgba(139, 0, 0, 0.3);
+            box-shadow:
+                0 0 0 6px rgba(0,229,255,0.12),
+                0 0 60px rgba(0,229,255,0.35),
+                0 0 120px rgba(0,229,255,0.12);
         }
+
+        /* Hero status badge */
+        .status-badge {
+            position: absolute;
+            bottom: -6px;
+            right: -6px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 5px 12px;
+            font-size: 0.72rem;
+            font-family: var(--font-mono);
+            color: var(--green-dim);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 2;
+            white-space: nowrap;
+        }
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 8px var(--green);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(0.8); }
+        }
+
+        /* Hero text */
         .hero-text {
-            flex: 1;
+            position: relative;
         }
-        .hero-text h1 {
-            font-size: 2.8rem;
+        .hero-label {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--cyan);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            opacity: 0.8;
+        }
+        .hero-name {
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
             font-weight: 900;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
             margin-bottom: 8px;
-            letter-spacing: -1px;
         }
-        .hero-text .subtitle {
-            font-size: 1.15rem;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 16px;
+        .hero-name .highlight {
+            background: linear-gradient(135deg, var(--cyan) 0%, #00b8ff 50%, var(--purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        .hero-text .summary {
-            font-size: 0.95rem;
+        .hero-title {
+            font-family: var(--font-mono);
+            font-size: 1rem;
             color: var(--text-secondary);
-            line-height: 1.8;
-            max-width: 520px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .hero-title .prompt {
+            color: var(--cyan);
+        }
+        .hero-title .typed-text {
+            color: var(--green-dim);
+        }
+        .hero-summary {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.85;
+            max-width: 540px;
+            margin-bottom: 28px;
+            border-left: 2px solid var(--cyan-border);
+            padding-left: 16px;
         }
         .hero-actions {
             display: flex;
             gap: 12px;
-            margin-top: 24px;
             flex-wrap: wrap;
         }
 
         @media (max-width: 768px) {
-            .hero { padding: 100px 0 40px; }
+            .hero { padding: 100px 0 56px; }
             .hero-inner {
-                flex-direction: column;
+                grid-template-columns: 1fr;
                 text-align: center;
                 gap: 32px;
+                justify-items: center;
             }
-            .hero-text h1 { font-size: 2rem; }
-            .hero-text .summary { max-width: 100%; }
+            .hero-title { justify-content: center; }
+            .hero-summary { border-left: none; padding-left: 0; border-top: 2px solid var(--cyan-border); padding-top: 14px; }
             .hero-actions { justify-content: center; }
+            .status-badge { bottom: 4px; right: 4px; }
         }
 
-        /* ═══════════════════════════════════════════════
+        /* ═══════════════════════════════════════════════════════
+           BUTTONS
+        ═══════════════════════════════════════════════════════ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 26px;
+            border-radius: var(--radius-sm);
+            font-size: 0.88rem;
+            font-weight: 600;
+            font-family: var(--font-mono);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            border: none;
+            letter-spacing: 0.03em;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary {
+            background: var(--cyan);
+            color: var(--bg-base);
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.15) 100%);
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+        .btn-primary:hover {
+            color: var(--bg-base);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,229,255,0.4), 0 0 40px rgba(0,229,255,0.15);
+        }
+        .btn-primary:hover::before { opacity: 1; }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-card);
+        }
+        .btn-ghost:hover {
+            border-color: var(--cyan-border);
+            color: var(--cyan);
+            background: var(--cyan-glow-sm);
+        }
+
+        .btn-sm {
+            padding: 7px 16px;
+            font-size: 0.78rem;
+        }
+
+        /* ═══════════════════════════════════════════════════════
            CONTACT BAR
-           ═══════════════════════════════════════════════ */
+        ═══════════════════════════════════════════════════════ */
         .contact-bar {
-            background: var(--bg-secondary);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 20px 28px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
+            padding: 18px 28px;
             display: flex;
             flex-wrap: wrap;
-            gap: 24px;
-            margin-bottom: 48px;
-            transition: background var(--transition-normal), border-color var(--transition-normal);
+            gap: 20px;
+            margin-bottom: 72px;
+            position: relative;
+            z-index: 1;
         }
+        .contact-bar::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, rgba(0,229,255,0.15), transparent 60%);
+            z-index: -1;
+        }
+
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 0.88rem;
+            gap: 9px;
+            font-size: 0.83rem;
             color: var(--text-secondary);
+            font-family: var(--font-mono);
             transition: color var(--transition-fast);
         }
         .contact-item i {
-            color: var(--accent);
-            font-size: 1rem;
-            width: 20px;
+            color: var(--cyan);
+            font-size: 0.9rem;
+            width: 18px;
             text-align: center;
         }
         .contact-item a {
             color: var(--text-secondary);
         }
+        .contact-item:hover,
         .contact-item a:hover {
-            color: var(--accent);
+            color: var(--cyan);
         }
 
         @media (max-width: 600px) {
-            .contact-bar {
-                flex-direction: column;
-                gap: 12px;
-                padding: 16px 20px;
-            }
+            .contact-bar { flex-direction: column; gap: 12px; padding: 16px 20px; }
         }
 
-        /* ═══════════════════════════════════════════════
-           BUTTONS
-           ═══════════════════════════════════════════════ */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 24px;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            font-family: 'Inter', 'Noto Sans Thai', sans-serif;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-            border: none;
-        }
-        .btn-primary {
-            background: var(--accent);
-            color: #fff;
-        }
-        .btn-primary:hover {
-            background: var(--accent-hover);
-            color: #fff;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 16px var(--accent-glow);
-        }
-        .btn-outline {
-            background: transparent;
-            color: var(--text-primary);
-            border: 1.5px solid var(--card-border);
-        }
-        .btn-outline:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            background: var(--accent-soft);
-        }
-        .btn-sm {
-            padding: 7px 16px;
-            font-size: 0.82rem;
-        }
-
-        /* ═══════════════════════════════════════════════
-           SECTIONS
-           ═══════════════════════════════════════════════ */
+        /* ═══════════════════════════════════════════════════════
+           SECTION HEADERS
+        ═══════════════════════════════════════════════════════ */
         .section {
-            padding: 56px 0;
+            padding: 64px 0;
+            position: relative;
+            z-index: 1;
         }
+
         .section-header {
             display: flex;
             align-items: center;
             gap: 16px;
-            margin-bottom: 36px;
+            margin-bottom: 40px;
         }
-        .section-number {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            font-weight: 800;
-            color: var(--accent);
-            min-width: 32px;
+        .section-num {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--cyan);
+            letter-spacing: 0.1em;
+            min-width: 30px;
+            opacity: 0.7;
         }
         .section-title {
-            font-size: 1.5rem;
+            font-size: 1.45rem;
             font-weight: 800;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.3px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 36px;
+            height: 2px;
+            background: var(--cyan);
+            border-radius: 2px;
         }
         .section-line {
             flex: 1;
             height: 1px;
-            background: var(--divider);
-            transition: background var(--transition-normal);
+            background: linear-gradient(to right, var(--border), transparent);
         }
 
-        /* ═══════════════════════════════════════════════
-           SKILLS SECTION
-           ═══════════════════════════════════════════════ */
+        /* ═══════════════════════════════════════════════════════
+           SKILL CARDS
+        ═══════════════════════════════════════════════════════ */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 18px;
         }
+
         .skill-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 14px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
             padding: 24px;
             transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--cyan), transparent);
+            opacity: 0;
+            transition: opacity var(--transition-normal);
         }
         .skill-card:hover {
-            box-shadow: var(--card-shadow-hover);
+            border-color: var(--cyan-border);
+            background: var(--bg-card-hover);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 0 1px var(--cyan-border), inset 0 0 40px rgba(0,229,255,0.03);
             transform: translateY(-3px);
-            border-color: var(--accent);
         }
+        .skill-card:hover::before { opacity: 1; }
+
         .skill-card-header {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 16px;
+            margin-bottom: 18px;
         }
         .skill-card-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: var(--accent-soft);
-            color: var(--accent);
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-sm);
+            background: var(--cyan-glow-sm);
+            border: 1px solid var(--cyan-border);
+            color: var(--cyan);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
         .skill-card h4 {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 700;
+            letter-spacing: 0.02em;
         }
+
         .skill-icons {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(68px, 1fr));
+            gap: 8px;
         }
         .skill-icon-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             gap: 6px;
-            padding: 14px 6px;
-            border-radius: 12px;
-            border: 1px solid var(--card-border);
-            background: var(--bg-secondary);
-            transition: all var(--transition-fast);
+            padding: 12px 4px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.02);
             cursor: default;
+            transition: all var(--transition-fast);
         }
         .skill-icon-item:hover {
-            border-color: var(--accent);
-            background: var(--accent-soft);
+            border-color: var(--cyan-border);
+            background: var(--cyan-glow-sm);
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px var(--accent-glow);
+            box-shadow: 0 6px 20px rgba(0,229,255,0.12);
         }
         .skill-icon-item i,
         .skill-icon-item img {
-            font-size: 2rem;
-            width: 2rem;
-            height: 2rem;
+            font-size: 1.9rem;
+            width: 1.9rem;
+            height: 1.9rem;
             object-fit: contain;
-            transition: transform var(--transition-fast);
+            transition: transform var(--transition-fast), filter var(--transition-fast);
         }
         .skill-icon-item:hover i,
         .skill-icon-item:hover img {
             transform: scale(1.15);
         }
         .skill-icon-item span {
-            font-size: 0.65rem;
+            font-size: 0.62rem;
             font-weight: 600;
             color: var(--text-muted);
+            font-family: var(--font-mono);
             text-align: center;
-            line-height: 1.2;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             max-width: 100%;
+            transition: color var(--transition-fast);
         }
-        .skill-icon-item:hover span {
-            color: var(--accent);
-        }
-        /* Dark mode icon inversion for single-color icons */
-        body.dark-mode .skill-icon-item .icon-invert {
-            filter: invert(1);
-        }
-        @media (max-width: 480px) {
-            .skill-icons {
-                grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-                gap: 8px;
-            }
-            .skill-icon-item {
-                padding: 10px 4px;
-            }
-            .skill-icon-item i,
-            .skill-icon-item img {
-                font-size: 1.6rem;
-                width: 1.6rem;
-                height: 1.6rem;
-            }
-            .skill-icon-item span {
-                font-size: 0.58rem;
-            }
-        }
+        .skill-icon-item:hover span { color: var(--cyan); }
 
-        /* ═══════════════════════════════════════════════
+        /* icon invert for dark-bg icons */
+        .icon-invert { filter: invert(1) brightness(0.85); }
+
+        /* ═══════════════════════════════════════════════════════
            PROJECT CARDS
-           ═══════════════════════════════════════════════ */
+        ═══════════════════════════════════════════════════════ */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 18px;
         }
+
         .project-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 14px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
             padding: 28px;
             position: relative;
             overflow: hidden;
             transition: all var(--transition-normal);
+            display: flex;
+            flex-direction: column;
         }
+
         .project-card::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0;
-            height: 3px;
-            background: var(--accent);
+            height: 2px;
+            background: linear-gradient(90deg, var(--cyan), var(--purple));
             transform: scaleX(0);
             transform-origin: left;
             transition: transform var(--transition-normal);
         }
-        .project-card:hover::before {
-            transform: scaleX(1);
-        }
+        .project-card:hover::before { transform: scaleX(1); }
         .project-card:hover {
-            box-shadow: var(--card-shadow-hover);
+            border-color: var(--cyan-border);
+            background: var(--bg-card-hover);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.4), 0 0 0 1px var(--cyan-border);
             transform: translateY(-4px);
         }
+
+        .project-num {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+        }
+
         .project-card h4 {
-            font-size: 1.1rem;
-            margin-bottom: 6px;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            line-height: 1.3;
         }
+
         .project-role {
-            display: inline-block;
-            background: var(--accent-soft);
-            color: var(--accent);
-            font-size: 0.78rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--cyan-glow-sm);
+            border: 1px solid var(--cyan-border);
+            color: var(--cyan);
+            font-size: 0.72rem;
             font-weight: 600;
-            padding: 3px 10px;
-            border-radius: 6px;
+            font-family: var(--font-mono);
+            padding: 4px 12px;
+            border-radius: 20px;
             margin-bottom: 14px;
+            width: fit-content;
         }
+        .project-role i { font-size: 0.65rem; }
+
         .project-desc {
-            font-size: 0.88rem;
+            font-size: 0.87rem;
             color: var(--text-secondary);
+            line-height: 1.75;
+            flex: 1;
             margin-bottom: 16px;
-            line-height: 1.7;
         }
+
         .project-tech {
             display: flex;
             flex-wrap: wrap;
@@ -613,669 +808,869 @@
             margin-bottom: 18px;
         }
         .project-tech span {
-            font-size: 0.73rem;
+            font-size: 0.7rem;
             padding: 3px 10px;
-            background: var(--bg-secondary);
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 6px;
             color: var(--text-muted);
+            font-family: var(--font-mono);
             font-weight: 500;
-            transition: background var(--transition-normal);
         }
 
-        /* ═══════════════════════════════════════════════
-           TIMELINE (Experience & Education)
-           ═══════════════════════════════════════════════ */
-        .two-columns {
+        /* ═══════════════════════════════════════════════════════
+           TIMELINE
+        ═══════════════════════════════════════════════════════ */
+        .two-col {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 48px;
         }
         @media (max-width: 768px) {
-            .two-columns { grid-template-columns: 1fr; gap: 48px; }
+            .two-col { grid-template-columns: 1fr; gap: 40px; }
         }
 
         .timeline {
             position: relative;
-            padding-left: 28px;
+            padding-left: 26px;
         }
         .timeline::before {
             content: '';
             position: absolute;
-            left: 7px;
-            top: 8px;
-            bottom: 8px;
-            width: 2px;
-            background: var(--timeline-line);
-            transition: background var(--transition-normal);
+            left: 6px;
+            top: 10px;
+            bottom: 10px;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--cyan-border), transparent);
         }
+
         .timeline-item {
             position: relative;
             margin-bottom: 32px;
         }
-        .timeline-item:last-child {
-            margin-bottom: 0;
-        }
+        .timeline-item:last-child { margin-bottom: 0; }
+
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -24px;
-            top: 8px;
-            width: 12px;
-            height: 12px;
+            left: -23px;
+            top: 7px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            border: 3px solid var(--accent);
-            background: var(--timeline-dot-bg);
-            transition: background var(--transition-normal);
+            border: 2px solid var(--cyan);
+            background: var(--bg-base);
+            box-shadow: 0 0 10px var(--cyan-glow);
             z-index: 1;
         }
+
         .timeline-item h4 {
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             font-weight: 700;
             margin-bottom: 4px;
         }
         .timeline-meta {
-            font-size: 0.82rem;
-            color: var(--accent);
-            font-weight: 600;
+            font-size: 0.78rem;
+            color: var(--cyan);
+            font-family: var(--font-mono);
+            font-weight: 500;
             margin-bottom: 10px;
+            opacity: 0.85;
         }
         .timeline-item ul {
-            padding-left: 18px;
+            padding-left: 16px;
             margin: 0;
         }
         .timeline-item li {
-            font-size: 0.85rem;
+            font-size: 0.83rem;
             color: var(--text-secondary);
-            margin-bottom: 6px;
+            margin-bottom: 5px;
             line-height: 1.6;
         }
-        .gpax-badge {
+        .timeline-item li::marker { color: var(--cyan); }
+
+        .gpa-badge {
             display: inline-block;
-            background: var(--accent-soft);
-            color: var(--accent);
-            font-size: 0.78rem;
+            background: var(--cyan-glow-sm);
+            border: 1px solid var(--cyan-border);
+            color: var(--cyan);
+            font-size: 0.72rem;
             font-weight: 700;
-            padding: 2px 10px;
+            font-family: var(--font-mono);
+            padding: 2px 9px;
             border-radius: 6px;
-            margin-left: 4px;
+            margin-left: 6px;
         }
 
-        /* ═══════════════════════════════════════════════
+        /* ═══════════════════════════════════════════════════════
            OTHER SKILLS SECTION
-           ═══════════════════════════════════════════════ */
+        ═══════════════════════════════════════════════════════ */
         .other-skills-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 24px;
+            gap: 20px;
         }
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .other-skills-grid { grid-template-columns: 1fr; }
         }
-        .lang-skill {
+
+        /* Language bars */
+        .lang-item {
             margin-bottom: 18px;
         }
-        .lang-skill-header {
+        .lang-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
-        .lang-skill-name {
-            font-size: 0.9rem;
+        .lang-name {
+            font-size: 0.88rem;
             font-weight: 600;
         }
-        .lang-skill-level {
-            font-size: 0.78rem;
+        .lang-level {
+            font-size: 0.75rem;
+            font-family: var(--font-mono);
             color: var(--text-muted);
-            font-weight: 500;
         }
-        .progress-bar {
-            height: 6px;
-            background: var(--progress-track);
-            border-radius: 3px;
+        .progress-track {
+            height: 4px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 4px;
             overflow: hidden;
-            transition: background var(--transition-normal);
         }
         .progress-fill {
             height: 100%;
-            background: var(--accent);
-            border-radius: 3px;
-            transition: width 1s ease;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--cyan), var(--cyan-dim));
+            box-shadow: 0 0 8px rgba(0,229,255,0.4);
+            transition: width 1.2s ease;
         }
 
-        .soft-skills-list {
+        /* Soft skills */
+        .soft-skills-wrap {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
         }
-        .soft-skill-item {
+        .soft-skill {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 18px;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
+            gap: 7px;
+            padding: 9px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
             border-radius: 10px;
-            font-size: 0.85rem;
+            font-size: 0.83rem;
             font-weight: 500;
             transition: all var(--transition-fast);
         }
-        .soft-skill-item i {
-            color: var(--accent);
-            font-size: 0.9rem;
+        .soft-skill i {
+            color: var(--cyan);
+            font-size: 0.85rem;
         }
-        .soft-skill-item:hover {
-            border-color: var(--accent);
-            background: var(--accent-soft);
+        .soft-skill:hover {
+            border-color: var(--cyan-border);
+            background: var(--cyan-glow-sm);
+            color: var(--cyan);
             transform: translateY(-2px);
         }
 
-        /* ═══════════════════════════════════════════════
+        /* ═══════════════════════════════════════════════════════
            FOOTER
-           ═══════════════════════════════════════════════ */
+        ═══════════════════════════════════════════════════════ */
         .footer {
             text-align: center;
-            padding: 36px 24px;
-            border-top: 2px solid var(--accent);
-            margin-top: 32px;
-            background: var(--bg-secondary);
-            transition: background var(--transition-normal), border-color var(--transition-normal);
+            padding: 40px 24px 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 24px;
+            position: relative;
+            z-index: 1;
+        }
+        .footer-glow {
+            position: absolute;
+            bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
         }
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 16px;
-            margin-bottom: 16px;
+            gap: 12px;
+            margin-bottom: 20px;
         }
         .footer-links a {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            border: 1px solid var(--card-border);
+            width: 42px;
+            height: 42px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-card);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-primary);
-            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
             transition: all var(--transition-fast);
         }
         .footer-links a:hover {
-            background: var(--accent);
-            color: #fff;
-            border-color: var(--accent);
+            border-color: var(--cyan-border);
+            color: var(--cyan);
+            background: var(--cyan-glow-sm);
+            box-shadow: 0 0 16px var(--cyan-glow);
             transform: translateY(-2px);
         }
         .footer p {
-            font-size: 0.8rem;
+            font-size: 0.76rem;
             color: var(--text-muted);
+            font-family: var(--font-mono);
             margin: 4px 0;
         }
 
-        /* ═══════════════════════════════════════════════
+        /* ═══════════════════════════════════════════════════════
            SCROLL ANIMATIONS
-           ═══════════════════════════════════════════════ */
+        ═══════════════════════════════════════════════════════ */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
         }
         .reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Stagger children */
-        .stagger-children > * {
+        .stagger > * {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
+            transform: translateY(18px);
+            transition: opacity 0.45s ease, transform 0.45s ease;
         }
-        .stagger-children.visible > *:nth-child(1) { transition-delay: 0.05s; }
-        .stagger-children.visible > *:nth-child(2) { transition-delay: 0.10s; }
-        .stagger-children.visible > *:nth-child(3) { transition-delay: 0.15s; }
-        .stagger-children.visible > *:nth-child(4) { transition-delay: 0.20s; }
-        .stagger-children.visible > *:nth-child(5) { transition-delay: 0.25s; }
-        .stagger-children.visible > *:nth-child(6) { transition-delay: 0.30s; }
-        .stagger-children.visible > * {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        .stagger-children.visible > * {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .stagger.visible > *:nth-child(1) { transition-delay: 0.05s; opacity: 1; transform: none; }
+        .stagger.visible > *:nth-child(2) { transition-delay: 0.10s; opacity: 1; transform: none; }
+        .stagger.visible > *:nth-child(3) { transition-delay: 0.15s; opacity: 1; transform: none; }
+        .stagger.visible > *:nth-child(4) { transition-delay: 0.20s; opacity: 1; transform: none; }
+        .stagger.visible > *:nth-child(5) { transition-delay: 0.25s; opacity: 1; transform: none; }
+        .stagger.visible > *:nth-child(6) { transition-delay: 0.30s; opacity: 1; transform: none; }
 
-        /* ═══════════════════════════════════════════════
-           UTILITY
-           ═══════════════════════════════════════════════ */
-        .text-accent { color: var(--accent) !important; }
+        /* ═══════════════════════════════════════════════════════
+           LANG TOGGLE HELPER
+        ═══════════════════════════════════════════════════════ */
+        [data-lang-en] { display: none; }
+        body.lang-en [data-lang-th] { display: none; }
+        body.lang-en [data-lang-en] { display: initial; }
+
+        /* Inline display fixes for spans */
+        span[data-lang-en], span[data-lang-th] { display: inline; }
+        body:not(.lang-en) span[data-lang-en] { display: none; } /* ซ่อน span ภาษาอังกฤษเมื่อไม่ใช่คลาส .lang-en */
+        body.lang-en span[data-lang-th] { display: none; }
+        body.lang-en span[data-lang-en] { display: inline; }
+        
+        li[data-lang-en], li[data-lang-th] { display: list-item; }
+        body:not(.lang-en) li[data-lang-en] { display: none; }  /* ซ่อน li ภาษาอังกฤษเมื่อไม่ใช่คลาส .lang-en */
+        body.lang-en li[data-lang-th] { display: none; }
+        body.lang-en li[data-lang-en] { display: list-item; }
+
+        /* ═══════════════════════════════════════════════════════
+           UTILITIES
+        ═══════════════════════════════════════════════════════ */
+        .text-cyan { color: var(--cyan); }
+        .mono { font-family: var(--font-mono); }
     </style>
 </head>
 <body>
 
-    <!-- ═══════════════════════════════════════════════
-         NAVBAR
-         ═══════════════════════════════════════════════ -->
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <a class="navbar-brand" href="#">NACHASIL NAKEN</a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#about" data-th="เกี่ยวกับฉัน" data-en="About">เกี่ยวกับฉัน</a></li>
-                <li><a href="#skills" data-th="ทักษะ" data-en="Skills">ทักษะ</a></li>
-                <li><a href="#projects" data-th="ผลงาน" data-en="Projects">ผลงาน</a></li>
-                <li><a href="#experience" data-th="ประสบการณ์" data-en="Experience">ประสบการณ์</a></li>
-                <li><a href="#other-skills" data-th="ทักษะอื่น ๆ" data-en="Other Skills">ทักษะอื่น ๆ</a></li>
-            </ul>
-            <div class="nav-controls">
-                <button class="toggle-btn" id="lang-toggle" title="Switch Language">EN</button>
-                <button class="toggle-btn" id="theme-toggle" title="Toggle Theme"><i class="fas fa-moon"></i></button>
-                <button class="mobile-toggle" id="mobile-menu" aria-label="Menu"><i class="fas fa-bars"></i></button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- ═══════════════════════════════════════════════
-         HERO SECTION
-         ═══════════════════════════════════════════════ -->
-    <section class="hero" id="about">
-        <div class="container">
-            <div class="hero-inner reveal">
-                <div class="hero-img-wrap">
-                    <!-- ✏️ แก้ไข src ด้านล่างเพื่อใส่รูปภาพของคุณ -->
-                    <img src="USER.jpg" alt="Nachasil Naken" class="profile-img" id="profile-image">
-                </div>
-                <div class="hero-text">
-                    <h1 data-th="ณชาศิลป์ <span class='text-accent'>นาเคณฑ์</span>" data-en="Nachasil <span class='text-accent'>Naken</span>">ณชาศิลป์ <span class="text-accent">นาเคณฑ์</span></h1>
-                    <p class="subtitle" data-th="ผู้สมัครฝึกงาน Full-stack Web Development" data-en="Full-stack Web Development Intern Candidate">ผู้สมัครฝึกงาน Full-stack Web Development</p>
-                    <p class="summary" data-th="นักศึกษาชั้นปีที่ 3 สายงาน IT ที่มีความมุ่งมั่น กำลังมองหาโอกาสสหกิจศึกษา เพื่อนำทักษะ Full-stack Web Development, การจัดการฐานข้อมูล และ Linux มาประยุกต์ใช้จริง พร้อมเรียนรู้เทคโนโลยีใหม่ ๆ และสนับสนุนทีมอย่างเต็มที่" data-en="A dedicated 3rd-year IT student seeking a Cooperative Education opportunity to apply Full-stack Web Development, database management, and Linux skills in a professional environment. Eager to learn modern technologies and contribute effectively to a development team.">นักศึกษาชั้นปีที่ 3 สายงาน IT ที่มีความมุ่งมั่น กำลังมองหาโอกาสสหกิจศึกษา เพื่อนำทักษะ Full-stack Web Development, การจัดการฐานข้อมูล และ Linux มาประยุกต์ใช้จริง พร้อมเรียนรู้เทคโนโลยีใหม่ ๆ และสนับสนุนทีมอย่างเต็มที่</p>
-                    <div class="hero-actions">
-                        <a href="https://github.com/Mightycgm" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="https://mail.google.com/mail/?view=cm&to=Nachasil.naken03@gmail.com" target="_blank" class="btn btn-outline" data-th="<i class='fas fa-envelope'></i> ติดต่อฉัน" data-en="<i class='fas fa-envelope'></i> Contact Me"><i class='fas fa-envelope'></i> ติดต่อฉัน</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════
-         CONTACT BAR
-         ═══════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
     <div class="container">
-        <div class="contact-bar reveal">
-            <div class="contact-item">
-                <i class="fas fa-phone"></i>
-                <span>062-394-8480</span>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:Nachasil.naken03@gmail.com">Nachasil.naken03@gmail.com</a>
-            </div>
-            <div class="contact-item">
-                <i class="fab fa-github"></i>
-                <a href="https://github.com/Mightycgm" target="_blank">github.com/Mightycgm</a>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <span data-th="19/325 หมู่ที่ 2 ซอยวิภาวดีรังสิต 60 แขวงตลาดบางเขน เขตหลักสี่ กรุงเทพมหานคร 10210" data-en="19/325 Moo 2, Soi Vibhavadi Rangsit 60, Talat Bang Khen, Laksi, Bangkok 10210">19/325 หมู่ที่ 2 ซอยวิภาวดีรังสิต 60 แขวงตลาดบางเขน เขตหลักสี่ กรุงเทพมหานคร 10210</span>
-            </div>
+        <a class="navbar-brand" href="#about">
+            <span class="brand-prefix">&gt;_</span>nachasil.dev<span class="cursor"></span>
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about"      id="nav-about">About</a></li>
+            <li><a href="#skills"     id="nav-skills">Skills</a></li>
+            <li><a href="#projects"   id="nav-projects">Projects</a></li>
+            <li><a href="#experience" id="nav-exp">Experience</a></li>
+            <li><a href="#other"      id="nav-other">More</a></li>
+        </ul>
+
+        <div class="nav-controls">
+            <button class="nav-btn" id="lang-btn" title="Switch Language (TH/EN)">TH</button>
+            <button class="mobile-toggle" id="mob-btn" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </div>
+</nav>
 
-    <!-- ═══════════════════════════════════════════════
-         SKILLS SECTION
-         ═══════════════════════════════════════════════ -->
-    <section class="section" id="skills">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-number">01</span>
-                <h2 class="section-title" data-th="ทักษะ & ความเชี่ยวชาญ" data-en="Skills & Expertise">ทักษะ & ความเชี่ยวชาญ</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="skills-grid stagger-children reveal">
-                <!-- Programming Languages -->
-                <div class="skill-card">
-                    <div class="skill-card-header">
-                        <div class="skill-card-icon"><i class="fas fa-code"></i></div>
-                        <h4 data-th="ภาษาโปรแกรม" data-en="Programming Languages">ภาษาโปรแกรม</h4>
-                    </div>
-                    <div class="skill-icons">
-                        <div class="skill-icon-item"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
-                        <div class="skill-icon-item"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div>
-                        <div class="skill-icon-item"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
-                        <div class="skill-icon-item"><i class="devicon-python-plain colored"></i><span>Python</span></div>
-                        <div class="skill-icon-item"><i class="devicon-java-plain colored"></i><span>Java</span></div>
-                        <div class="skill-icon-item"><i class="devicon-csharp-plain colored"></i><span>C#</span></div>
-                        <div class="skill-icon-item"><i class="devicon-php-plain colored"></i><span>PHP</span></div>
-                    </div>
+<!-- ═══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+<section class="hero" id="about">
+    <div class="container">
+        <div class="hero-inner reveal">
+
+            <!-- Profile image -->
+            <div class="profile-wrap">
+                <div class="profile-hex">
+                    <img src="USER.jpg" alt="Nachasil Naken" class="profile-img" id="profile-img">
                 </div>
-                <!-- Frameworks -->
-                <div class="skill-card">
-                    <div class="skill-card-header">
-                        <div class="skill-card-icon"><i class="fas fa-layer-group"></i></div>
-                        <h4 data-th="เฟรมเวิร์ก & ไลบรารี" data-en="Frameworks & Libraries">เฟรมเวิร์ก & ไลบรารี</h4>
-                    </div>
-                    <div class="skill-icons">
-                        <div class="skill-icon-item"><i class="devicon-nextjs-plain icon-invert"></i><span>Next.js</span></div>
-                        <div class="skill-icon-item"><i class="devicon-react-original colored"></i><span>React</span></div>
-                        <div class="skill-icon-item"><i class="devicon-django-plain icon-invert"></i><span>Django</span></div>
-                        <div class="skill-icon-item"><i class="devicon-bootstrap-plain colored"></i><span>Bootstrap</span></div>
-                    </div>
-                </div>
-                <!-- Databases -->
-                <div class="skill-card">
-                    <div class="skill-card-header">
-                        <div class="skill-card-icon"><i class="fas fa-database"></i></div>
-                        <h4 data-th="ฐานข้อมูล" data-en="Databases">ฐานข้อมูล</h4>
-                    </div>
-                    <div class="skill-icons">
-                        <div class="skill-icon-item"><i class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
-                        <div class="skill-icon-item"><i class="devicon-microsoftsqlserver-plain colored"></i><span>SQL Server</span></div>
-                        <div class="skill-icon-item"><i class="devicon-firebase-plain colored"></i><span>Firebase</span></div>
-                    </div>
-                </div>
-                <!-- Tools & OS -->
-                <div class="skill-card">
-                    <div class="skill-card-header">
-                        <div class="skill-card-icon"><i class="fas fa-terminal"></i></div>
-                        <h4 data-th="เครื่องมือ & ระบบ" data-en="Tools & Systems">เครื่องมือ & ระบบ</h4>
-                    </div>
-                    <div class="skill-icons">
-                        <div class="skill-icon-item"><i class="devicon-git-plain colored"></i><span>Git</span></div>
-                        <div class="skill-icon-item"><i class="devicon-github-original icon-invert"></i><span>GitHub</span></div>
-                        <div class="skill-icon-item"><i class="devicon-vscode-plain colored"></i><span>VS Code</span></div>
-                        <div class="skill-icon-item"><i class="devicon-archlinux-plain colored"></i><span>Arch Linux</span></div>
-                        <div class="skill-icon-item"><i class="devicon-ubuntu-plain colored"></i><span>Ubuntu</span></div>
-                        <div class="skill-icon-item"><i class="devicon-unity-plain icon-invert"></i><span>Unity</span></div>
-                    </div>
-                </div>
-                <!-- Design -->
-                <div class="skill-card">
-                    <div class="skill-card-header">
-                        <div class="skill-card-icon"><i class="fas fa-palette"></i></div>
-                        <h4 data-th="การออกแบบ" data-en="Design">การออกแบบ</h4>
-                    </div>
-                    <div class="skill-icons">
-                        <div class="skill-icon-item"><i class="fas fa-chart-pie" style="color: var(--accent);"></i><span>Infographic</span></div>
-                        <div class="skill-icon-item"><i class="devicon-figma-plain colored"></i><span>UI Design</span></div>
-                    </div>
+                <div class="status-badge">
+                    <span class="status-dot"></span>
+                    <span data-lang-th>พร้อมรับงาน</span>
+                    <span data-lang-en>Open to Work</span>
                 </div>
             </div>
+
+            <!-- Text -->
+            <div class="hero-text">
+                <p class="hero-label">// Portfolio · Resume · 2026</p>
+                <h1 class="hero-name">
+                    <span data-lang-th>ณชาศิลป์ </span>
+                    <span data-lang-en>Nachasil </span>
+                    <span class="highlight">
+                        <span data-lang-th>นาเคณฑ์</span>
+                        <span data-lang-en>Naken</span>
+                    </span>
+                </h1>
+                <p class="hero-title">
+                    <span class="prompt">&gt;</span>
+                    <span class="typed-text">
+                        <span data-lang-th>Full-Stack Web Developer Intern Candidate</span>
+                        <span data-lang-en>Full-Stack Web Developer Intern Candidate</span>
+                    </span>
+                </p>
+                <p class="hero-summary">
+                    <span data-lang-th>นักศึกษาปี 3 สาขา IT ที่มีทักษะ Full-Stack Development, Linux และ Database Management พร้อมนำความรู้ไปใช้จริงในสภาพแวดล้อมระดับมืออาชีพ — เปิดรับโอกาสสหกิจศึกษาและฝึกงาน</span>
+                    <span data-lang-en>3rd-year IT student with hands-on skills in Full-Stack Web Development, Linux systems, and database management. Passionate about writing clean, maintainable code and eager to contribute to a real-world development team through cooperative education.</span>
+                </p>
+                <div class="hero-actions">
+                    <a href="https://github.com/Mightycgm" target="_blank" class="btn btn-primary" id="hero-github">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://mail.google.com/mail/?view=cm&to=Nachasil.naken03@gmail.com" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" id="hero-email">
+                        <i class="fas fa-paper-plane"></i>
+                        <span data-lang-th>ติดต่อฉัน</span>
+                        <span data-lang-en>Contact Me</span>
+                    </a>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- ═══════════════════════════════════════════════
-         PROJECTS SECTION
-         ═══════════════════════════════════════════════ -->
-    <section class="section" id="projects">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-number">02</span>
-                <h2 class="section-title" data-th="โปรเจกต์ที่ภาคภูมิใจ" data-en="Academic Projects">โปรเจกต์ที่ภาคภูมิใจ</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card reveal">
-                    <h4 data-th="Web Application รีวิวเกม" data-en="Game Review Web App">Web Application รีวิวเกม</h4>
-                    <span class="project-role">Full-stack Developer</span>
-                    <p class="project-desc" data-th="ออกแบบและพัฒนาเว็บแอปพลิเคชัน Responsive สำหรับจัดการเนื้อหารีวิวเกม สร้าง UI ที่เป็นระบบและรองรับทุกอุปกรณ์" data-en="Designed and developed a fully responsive web application for game content management with a structured UI that works seamlessly across all devices.">ออกแบบและพัฒนาเว็บแอปพลิเคชัน Responsive สำหรับจัดการเนื้อหารีวิวเกม สร้าง UI ที่เป็นระบบและรองรับทุกอุปกรณ์</p>
-                    <div class="project-tech">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                        <span>Bootstrap 5</span>
-                    </div>
-                    <a href="https://github.com/Mightycgm/Project-SPU-12267" target="_blank" class="btn btn-primary btn-sm"><i class="fab fa-github"></i> <span data-th="ดูโค้ด" data-en="View Code">ดูโค้ด</span></a>
-                </div>
-                <!-- Project 2 -->
-                <div class="project-card reveal">
-                    <h4>Out Of The Box <span style="font-weight:400; font-size:0.85rem; color:var(--text-muted);">(Puzzle Game)</span></h4>
-                    <span class="project-role">Solo Game Developer</span>
-                    <p class="project-desc" data-th="พัฒนา Gameplay Logic ที่ซับซ้อนและออกแบบด่านปริศนา บริหารจัดการโปรเจกต์ตั้งแต่ออกแบบจนถึง Testing" data-en="Engineered complex gameplay mechanics and puzzle logic. Managed the entire development lifecycle from design through testing.">พัฒนา Gameplay Logic ที่ซับซ้อนและออกแบบด่านปริศนา บริหารจัดการโปรเจกต์ตั้งแต่ออกแบบจนถึง Testing</p>
-                    <div class="project-tech">
-                        <span>Unity Engine</span>
-                        <span>C#</span>
-                    </div>
-                    <a href="https://github.com/Mightycgm/Puzzle-Out-Of-The-Box" target="_blank" class="btn btn-primary btn-sm"><i class="fab fa-github"></i> <span data-th="ดูโค้ด" data-en="View Code">ดูโค้ด</span></a>
-                </div>
-            </div>
+<!-- ═══════════════════════════════════════
+     CONTACT BAR
+═══════════════════════════════════════ -->
+<div class="container">
+    <div class="contact-bar reveal">
+        <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span>062-394-8480</span>
         </div>
-    </section>
+        <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:Nachasil.naken03@gmail.com">Nachasil.naken03@gmail.com</a>
+        </div>
+        <div class="contact-item">
+            <i class="fab fa-github"></i>
+            <a href="https://github.com/Mightycgm" target="_blank">github.com/Mightycgm</a>
+        </div>
+        <div class="contact-item">
+            <i class="fas fa-location-dot"></i>
+            <span>
+                <span data-lang-th>หลักสี่, กรุงเทพมหานคร</span>
+                <span data-lang-en>Laksi, Bangkok, Thailand</span>
+            </span>
+        </div>
+    </div>
+</div>
 
-    <!-- ═══════════════════════════════════════════════
-         EXPERIENCE & EDUCATION (Two Columns + Timeline)
-         ═══════════════════════════════════════════════ -->
-    <section class="section" id="experience">
-        <div class="container">
-            <div class="two-columns">
-                <!-- LEFT: Experience -->
-                <div>
-                    <div class="section-header reveal">
-                        <span class="section-number">03</span>
-                        <h2 class="section-title" data-th="ประสบการณ์" data-en="Experience">ประสบการณ์</h2>
-                        <div class="section-line"></div>
-                    </div>
-                    <div class="timeline reveal">
-                        <div class="timeline-item">
-                            <h4 data-th="นักศึกษาฝึกงานด้านไอที" data-en="IT Technician Intern">นักศึกษาฝึกงานด้านไอที</h4>
-                            <p class="timeline-meta" data-th="Com & Print Service | เม.ย. – พ.ค. 2567" data-en="Com & Print Service | Apr – May 2024">Com & Print Service | เม.ย. – พ.ค. 2567</p>
-                            <ul>
-                                <li data-th="วิเคราะห์และแก้ไขปัญหาฮาร์ดแวร์คอมพิวเตอร์และโน้ตบุ๊ค" data-en="Diagnosed and resolved hardware issues for laptops and desktops">วิเคราะห์และแก้ไขปัญหาฮาร์ดแวร์คอมพิวเตอร์และโน้ตบุ๊ค</li>
-                                <li data-th="ให้คำปรึกษาทางเทคนิคและนำเสนออุปกรณ์ไอทีที่เหมาะสม" data-en="Provided technical consultations and product recommendations">ให้คำปรึกษาทางเทคนิคและนำเสนออุปกรณ์ไอทีที่เหมาะสม</li>
-                                <li data-th="บริหารจัดการสต็อกและประสานงานภายในร้าน" data-en="Managed inventory and streamlined internal operations">บริหารจัดการสต็อกและประสานงานภายในร้าน</li>
-                            </ul>
-                        </div>
-                        <div class="timeline-item">
-                            <h4 data-th="นักศึกษาฝึกงานด้านสื่อและธุรการ" data-en="Multimedia & Administrative Intern">นักศึกษาฝึกงานด้านสื่อและธุรการ</h4>
-                            <p class="timeline-meta" data-th="ศูนย์วิทยาศาสตร์เพื่อการศึกษาตรัง | พ.ค. – ก.ย. 2565" data-en="Trang Science Centre | May – Sep 2022">ศูนย์วิทยาศาสตร์เพื่อการศึกษาตรัง | พ.ค. – ก.ย. 2565</p>
-                            <ul>
-                                <li data-th="สร้างสรรค์สื่อ Infographic สรุปเนื้อหาวิทยาศาสตร์" data-en="Created educational infographics to summarize scientific content">สร้างสรรค์สื่อ Infographic สรุปเนื้อหาวิทยาศาสตร์</li>
-                                <li data-th="สนับสนุนงานเอกสารและประสานงานนิทรรศการ" data-en="Supported administrative tasks and coordinated exhibitions">สนับสนุนงานเอกสารและประสานงานนิทรรศการ</li>
-                                <li data-th="ดูแลและอำนวยความสะดวกแก่นักเรียนที่เยี่ยมชม" data-en="Assisted visiting students during learning activities">ดูแลและอำนวยความสะดวกแก่นักเรียนที่เยี่ยมชม</li>
-                            </ul>
-                        </div>
-                    </div>
+<!-- ═══════════════════════════════════════
+     01 · SKILLS
+═══════════════════════════════════════ -->
+<section class="section" id="skills">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-num">01</span>
+            <h2 class="section-title">
+                <span data-lang-th>ทักษะ & ความเชี่ยวชาญ</span>
+                <span data-lang-en>Skills & Expertise</span>
+            </h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="skills-grid stagger reveal">
+
+            <!-- Programming Languages -->
+            <div class="skill-card">
+                <div class="skill-card-header">
+                    <div class="skill-card-icon"><i class="fas fa-code"></i></div>
+                    <h4>
+                        <span data-lang-th>ภาษาโปรแกรม</span>
+                        <span data-lang-en>Languages</span>
+                    </h4>
+                </div>
+                <div class="skill-icons">
+                    <div class="skill-icon-item"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
+                    <div class="skill-icon-item"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div>
+                    <div class="skill-icon-item"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
+                    <div class="skill-icon-item"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+                    <div class="skill-icon-item"><i class="devicon-java-plain colored"></i><span>Java</span></div>
+                    <div class="skill-icon-item"><i class="devicon-csharp-plain colored"></i><span>C#</span></div>
+                    <div class="skill-icon-item"><i class="devicon-php-plain colored"></i><span>PHP</span></div>
+                </div>
+            </div>
+
+            <!-- Frameworks -->
+            <div class="skill-card">
+                <div class="skill-card-header">
+                    <div class="skill-card-icon"><i class="fas fa-layer-group"></i></div>
+                    <h4>
+                        <span data-lang-th>เฟรมเวิร์ก & ไลบรารี</span>
+                        <span data-lang-en>Frameworks & Libraries</span>
+                    </h4>
+                </div>
+                <div class="skill-icons">
+                    <div class="skill-icon-item"><i class="devicon-nextjs-plain icon-invert"></i><span>Next.js</span></div>
+                    <div class="skill-icon-item"><i class="devicon-react-original colored"></i><span>React</span></div>
+                    <div class="skill-icon-item"><i class="devicon-django-plain icon-invert"></i><span>Django</span></div>
+                    <div class="skill-icon-item"><i class="devicon-bootstrap-plain colored"></i><span>Bootstrap</span></div>
+                </div>
+            </div>
+
+            <!-- Databases -->
+            <div class="skill-card">
+                <div class="skill-card-header">
+                    <div class="skill-card-icon"><i class="fas fa-database"></i></div>
+                    <h4>
+                        <span data-lang-th>ฐานข้อมูล</span>
+                        <span data-lang-en>Databases</span>
+                    </h4>
+                </div>
+                <div class="skill-icons">
+                    <div class="skill-icon-item"><i class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
+                    <div class="skill-icon-item"><i class="devicon-microsoftsqlserver-plain colored"></i><span>SQL Server</span></div>
+                    <div class="skill-icon-item"><i class="devicon-firebase-plain colored"></i><span>Firebase</span></div>
+                </div>
+            </div>
+
+            <!-- Tools & OS -->
+            <div class="skill-card">
+                <div class="skill-card-header">
+                    <div class="skill-card-icon"><i class="fas fa-terminal"></i></div>
+                    <h4>
+                        <span data-lang-th>เครื่องมือ & ระบบ</span>
+                        <span data-lang-en>Tools & Systems</span>
+                    </h4>
+                </div>
+                <div class="skill-icons">
+                    <div class="skill-icon-item"><i class="devicon-git-plain colored"></i><span>Git</span></div>
+                    <div class="skill-icon-item"><i class="devicon-github-original icon-invert"></i><span>GitHub</span></div>
+                    <div class="skill-icon-item"><i class="devicon-vscode-plain colored"></i><span>VS Code</span></div>
+                    <div class="skill-icon-item"><i class="devicon-archlinux-plain colored"></i><span>Arch Linux</span></div>
+                    <div class="skill-icon-item"><i class="devicon-ubuntu-plain colored"></i><span>Ubuntu</span></div>
+                    <div class="skill-icon-item"><i class="devicon-unity-plain icon-invert"></i><span>Unity</span></div>
+                </div>
+            </div>
+
+            <!-- Design -->
+            <div class="skill-card">
+                <div class="skill-card-header">
+                    <div class="skill-card-icon"><i class="fas fa-pen-ruler"></i></div>
+                    <h4>
+                        <span data-lang-th>ออกแบบ & UI</span>
+                        <span data-lang-en>Design & UI</span>
+                    </h4>
+                </div>
+                <div class="skill-icons">
+                    <div class="skill-icon-item"><i class="devicon-figma-plain colored"></i><span>Figma</span></div>
+                    <div class="skill-icon-item"><i class="fas fa-chart-pie" style="font-size:1.9rem; color:#00e5ff;"></i><span>Infographic</span></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     02 · PROJECTS
+═══════════════════════════════════════ -->
+<section class="section" id="projects">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-num">02</span>
+            <h2 class="section-title">
+                <span data-lang-th>โปรเจกต์ที่ภาคภูมิใจ</span>
+                <span data-lang-en>Featured Projects</span>
+            </h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="projects-grid">
+
+            <!-- Project 1 -->
+            <div class="project-card reveal">
+                <p class="project-num">PROJECT_01</p>
+                <h4>
+                    <span data-lang-th>Web Application รีวิวเกม</span>
+                    <span data-lang-en>Game Review Web Application</span>
+                </h4>
+                <span class="project-role">
+                    <i class="fas fa-user-code"></i> Full-Stack Developer
+                </span>
+                <p class="project-desc">
+                    <span data-lang-th>ออกแบบและพัฒนาเว็บแอปพลิเคชัน Responsive สำหรับจัดการและแสดงผลเนื้อหารีวิวเกม — ครอบคลุมทั้ง Frontend UI และ Backend Logic พร้อมระบบ CRUD เต็มรูปแบบ</span>
+                    <span data-lang-en>Engineered a fully responsive game-review platform from scratch. Implemented a structured component-based UI, CRUD operations, and a consistent design system — working seamlessly across all screen sizes.</span>
+                </p>
+                <div class="project-tech">
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>JavaScript</span>
+                    <span>Bootstrap 5</span>
+                </div>
+                <a href="https://github.com/Mightycgm/Project-SPU-12267" target="_blank" class="btn btn-ghost btn-sm" id="proj1-btn">
+                    <i class="fab fa-github"></i>
+                    <span data-lang-th>ดูซอร์สโค้ด</span>
+                    <span data-lang-en>View Source</span>
+                </a>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card reveal">
+                <p class="project-num">PROJECT_02</p>
+                <h4>Out Of The Box <span style="font-weight:400; font-size:0.85rem; color:var(--text-muted);">(Puzzle Game)</span></h4>
+                <span class="project-role">
+                    <i class="fas fa-gamepad"></i> Solo Game Developer
+                </span>
+                <p class="project-desc">
+                    <span data-lang-th>พัฒนา Gameplay Logic ที่ซับซ้อนและออกแบบด่านปริศนาแบบ Solo บริหารจัดการทุกขั้นตอนตั้งแต่ Game Design, Programming ไปจนถึง Playtesting</span>
+                    <span data-lang-en>Solo-developed a 3D puzzle game with complex physics-based mechanics. Managed the full game development lifecycle — from game design & level design through C# scripting to playtesting and iteration.</span>
+                </p>
+                <div class="project-tech">
+                    <span>Unity Engine</span>
+                    <span>C#</span>
+                    <span>Game Design</span>
+                    <span>Physics</span>
+                </div>
+                <a href="https://github.com/Mightycgm/Puzzle-Out-Of-The-Box" target="_blank" class="btn btn-ghost btn-sm" id="proj2-btn">
+                    <i class="fab fa-github"></i>
+                    <span data-lang-th>ดูซอร์สโค้ด</span>
+                    <span data-lang-en>View Source</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     03 + 04 · EXPERIENCE & EDUCATION
+═══════════════════════════════════════ -->
+<section class="section" id="experience">
+    <div class="container">
+        <div class="two-col">
+
+            <!-- Experience -->
+            <div>
+                <div class="section-header reveal">
+                    <span class="section-num">03</span>
+                    <h2 class="section-title">
+                        <span data-lang-th>ประสบการณ์</span>
+                        <span data-lang-en>Experience</span>
+                    </h2>
+                    <div class="section-line"></div>
                 </div>
 
-                <!-- RIGHT: Education -->
-                <div>
-                    <div class="section-header reveal">
-                        <span class="section-number">04</span>
-                        <h2 class="section-title" data-th="การศึกษา" data-en="Education">การศึกษา</h2>
-                        <div class="section-line"></div>
+                <div class="timeline reveal">
+                    <div class="timeline-item">
+                        <h4>
+                            <span data-lang-th>นักศึกษาฝึกงานด้านไอที</span>
+                            <span data-lang-en>IT Technician Intern</span>
+                        </h4>
+                        <p class="timeline-meta">
+                            <span data-lang-th>Com & Print Service · เม.ย. – พ.ค. 2567</span>
+                            <span data-lang-en>Com & Print Service · Apr – May 2024</span>
+                        </p>
+                        <ul>
+                            <li data-lang-th>วิเคราะห์และแก้ไขปัญหาฮาร์ดแวร์คอมพิวเตอร์และโน้ตบุ๊ค</li>
+                            <li data-lang-en>Diagnosed and resolved hardware failures across desktops & laptops</li>
+                            <li data-lang-th>ให้คำปรึกษาทางเทคนิคและแนะนำอุปกรณ์ไอทีที่เหมาะสม</li>
+                            <li data-lang-en>Delivered technical consultations and product recommendations to clients</li>
+                            <li data-lang-th>บริหารจัดการสต็อกและประสานงานภายในร้าน</li>
+                            <li data-lang-en>Maintained inventory and streamlined day-to-day store operations</li>
+                        </ul>
                     </div>
-                    <div class="timeline reveal">
-                        <div class="timeline-item">
-                            <h4 data-th="ปริญญาตรี เทคโนโลยีสารสนเทศ" data-en="B.S. Information Technology">ปริญญาตรี เทคโนโลยีสารสนเทศ</h4>
-                            <p class="timeline-meta" data-th="มหาวิทยาลัยศรีปทุม | คาดว่าจบปี 2570" data-en="Sripatum University | Expected 2027">มหาวิทยาลัยศรีปทุม | คาดว่าจบปี 2570</p>
-                        </div>
-                        <div class="timeline-item">
-                            <h4 data-th="ปวส. เทคโนโลยีสารสนเทศ" data-en="High Vocational Certificate (IT)">ปวส. เทคโนโลยีสารสนเทศ</h4>
-                            <p class="timeline-meta" data-th="วิทยาลัยอาชีวศึกษาธนบุรี" data-en="Thonburi Vocational College">วิทยาลัยอาชีวศึกษาธนบุรี</p>
-                            <p style="font-size: 0.85rem; color: var(--text-secondary);">GPAX <span class="gpax-badge">3.75</span></p>
-                        </div>
-                        <div class="timeline-item">
-                            <h4 data-th="ปวช. คอมพิวเตอร์ธุรกิจ" data-en="Vocational Certificate (Business Computer)">ปวช. คอมพิวเตอร์ธุรกิจ</h4>
-                            <p class="timeline-meta" data-th="วิทยาลัยเทคนิคตรัง" data-en="Trang Technical College">วิทยาลัยเทคนิคตรัง</p>
-                            <p style="font-size: 0.85rem; color: var(--text-secondary);">GPAX <span class="gpax-badge">3.69</span></p>
-                        </div>
+
+                    <div class="timeline-item">
+                        <h4>
+                            <span data-lang-th>นักศึกษาฝึกงานด้านสื่อและธุรการ</span>
+                            <span data-lang-en>Multimedia & Administrative Intern</span>
+                        </h4>
+                        <p class="timeline-meta">
+                            <span data-lang-th>ศูนย์วิทยาศาสตร์เพื่อการศึกษาตรัง · พ.ค. – ก.ย. 2565</span>
+                            <span data-lang-en>Trang Science Centre · May – Sep 2022</span>
+                        </p>
+                        <ul>
+                            <li data-lang-th>สร้างสื่อ Infographic สำหรับสรุปเนื้อหาวิทยาศาสตร์</li>
+                            <li data-lang-en>Produced educational infographics for science learning content</li>
+                            <li data-lang-th>สนับสนุนงานเอกสารและประสานงานนิทรรศการ</li>
+                            <li data-lang-en>Supported administrative tasks and coordinated exhibitions</li>
+                            <li data-lang-th>ดูแลและอำนวยความสะดวกแก่นักเรียนที่เยี่ยมชม</li>
+                            <li data-lang-en>Facilitated learning activities for visiting student groups</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- ═══════════════════════════════════════════════
-         OTHER SKILLS (Languages + Soft Skills)
-         ═══════════════════════════════════════════════ -->
-    <section class="section" id="other-skills">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-number">05</span>
-                <h2 class="section-title" data-th="ทักษะอื่น ๆ" data-en="Other Skills">ทักษะอื่น ๆ</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="other-skills-grid reveal">
-                <!-- Language Skills -->
-                <div class="skill-card">
-                    <div class="skill-card-header">
-                        <div class="skill-card-icon"><i class="fas fa-language"></i></div>
-                        <h4 data-th="ทักษะทางภาษา" data-en="Language Skills">ทักษะทางภาษา</h4>
-                    </div>
-                    <div class="lang-skill">
-                        <div class="lang-skill-header">
-                            <span class="lang-skill-name" data-th="ภาษาไทย" data-en="Thai">ภาษาไทย</span>
-                            <span class="lang-skill-level">Native</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 100%;"></div>
-                        </div>
-                    </div>
-                    <div class="lang-skill">
-                        <div class="lang-skill-header">
-                            <span class="lang-skill-name" data-th="ภาษาอังกฤษ" data-en="English">ภาษาอังกฤษ</span>
-                            <span class="lang-skill-level" data-th="สื่อสารได้" data-en="Communicative">สื่อสารได้</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 55%;"></div>
-                        </div>
-                    </div>
+            <!-- Education -->
+            <div>
+                <div class="section-header reveal">
+                    <span class="section-num">04</span>
+                    <h2 class="section-title">
+                        <span data-lang-th>การศึกษา</span>
+                        <span data-lang-en>Education</span>
+                    </h2>
+                    <div class="section-line"></div>
                 </div>
-                <!-- Soft Skills -->
-                <div class="skill-card">
-                    <div class="skill-card-header">
-                        <div class="skill-card-icon"><i class="fas fa-users"></i></div>
-                        <h4>Soft Skills</h4>
+
+                <div class="timeline reveal">
+                    <div class="timeline-item">
+                        <h4>
+                            <span data-lang-th>ปริญญาตรี เทคโนโลยีสารสนเทศ</span>
+                            <span data-lang-en>B.S. Information Technology</span>
+                        </h4>
+                        <p class="timeline-meta">
+                            <span data-lang-th>มหาวิทยาลัยศรีปทุม · คาดว่าจบปี 2570</span>
+                            <span data-lang-en>Sripatum University · Expected 2027</span>
+                        </p>
                     </div>
-                    <div class="soft-skills-list">
-                        <div class="soft-skill-item">
-                            <i class="fas fa-bolt"></i>
-                            <span data-th="เรียนรู้ไว" data-en="Fast Learner">เรียนรู้ไว</span>
-                        </div>
-                        <div class="soft-skill-item">
-                            <i class="fas fa-people-group"></i>
-                            <span data-th="ทำงานเป็นทีม" data-en="Teamwork">ทำงานเป็นทีม</span>
-                        </div>
-                        <div class="soft-skill-item">
-                            <i class="fas fa-comments"></i>
-                            <span data-th="สื่อสารดี" data-en="Communication">สื่อสารดี</span>
-                        </div>
-                        <div class="soft-skill-item">
-                            <i class="fas fa-seedling"></i>
-                            <span data-th="ใฝ่เรียนรู้ & พัฒนา" data-en="Growth Mindset">ใฝ่เรียนรู้ & พัฒนา</span>
-                        </div>
+
+                    <div class="timeline-item">
+                        <h4>
+                            <span data-lang-th>ปวส. เทคโนโลยีสารสนเทศ</span>
+                            <span data-lang-en>High Vocational Certificate — IT</span>
+                        </h4>
+                        <p class="timeline-meta">
+                            <span data-lang-th>วิทยาลัยอาชีวศึกษาธนบุรี</span>
+                            <span data-lang-en>Thonburi Vocational College</span>
+                        </p>
+                        <p style="font-size:0.82rem; color:var(--text-secondary);">
+                            GPA <span class="gpa-badge">3.75</span>
+                        </p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <h4>
+                            <span data-lang-th>ปวช. คอมพิวเตอร์ธุรกิจ</span>
+                            <span data-lang-en>Vocational Certificate — Business Computer</span>
+                        </h4>
+                        <p class="timeline-meta">
+                            <span data-lang-th>วิทยาลัยเทคนิคตรัง</span>
+                            <span data-lang-en>Trang Technical College</span>
+                        </p>
+                        <p style="font-size:0.82rem; color:var(--text-secondary);">
+                            GPA <span class="gpa-badge">3.69</span>
+                        </p>
                     </div>
                 </div>
             </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- ═══════════════════════════════════════════════
-         FOOTER
-         ═══════════════════════════════════════════════ -->
-    <footer class="footer">
-        <div class="footer-links">
-            <a href="https://github.com/Mightycgm" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="mailto:Nachasil.naken03@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="tel:0623948480" title="Phone"><i class="fas fa-phone"></i></a>
+<!-- ═══════════════════════════════════════
+     05 · OTHER SKILLS
+═══════════════════════════════════════ -->
+<section class="section" id="other">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-num">05</span>
+            <h2 class="section-title">
+                <span data-lang-th>ทักษะอื่น ๆ</span>
+                <span data-lang-en>Other Skills</span>
+            </h2>
+            <div class="section-line"></div>
         </div>
-        <p>© 2026 Nachasil Naken</p>
-        <p data-th="สร้างด้วย HTML, CSS & JavaScript" data-en="Built with HTML, CSS & JavaScript">สร้างด้วย HTML, CSS & JavaScript</p>
-    </footer>
 
-    <!-- ═══════════════════════════════════════════════
-         SCRIPTS
-         ═══════════════════════════════════════════════ -->
-    <script>
-        // ──────────────────────────────────
-        // Theme Toggle
-        // ──────────────────────────────────
-        const themeToggle = document.getElementById('theme-toggle');
+        <div class="other-skills-grid reveal">
 
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const isDark = document.body.classList.contains('dark-mode');
-            themeToggle.innerHTML = isDark
-                ? '<i class="fas fa-sun"></i>'
-                : '<i class="fas fa-moon"></i>';
+            <!-- Languages -->
+            <div class="skill-card">
+                <div class="skill-card-header">
+                    <div class="skill-card-icon"><i class="fas fa-language"></i></div>
+                    <h4>
+                        <span data-lang-th>ทักษะภาษา</span>
+                        <span data-lang-en>Languages</span>
+                    </h4>
+                </div>
+                <div class="lang-item">
+                    <div class="lang-header">
+                        <span class="lang-name">
+                            <span data-lang-th>ภาษาไทย</span>
+                            <span data-lang-en>Thai</span>
+                        </span>
+                        <span class="lang-level">Native</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width:100%;"></div>
+                    </div>
+                </div>
+                <div class="lang-item">
+                    <div class="lang-header">
+                        <span class="lang-name">
+                            <span data-lang-th>ภาษาอังกฤษ</span>
+                            <span data-lang-en>English</span>
+                        </span>
+                        <span class="lang-level">
+                            <span data-lang-th>สื่อสารได้</span>
+                            <span data-lang-en>Communicative</span>
+                        </span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width:55%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Soft Skills -->
+            <div class="skill-card">
+                <div class="skill-card-header">
+                    <div class="skill-card-icon"><i class="fas fa-users"></i></div>
+                    <h4>Soft Skills</h4>
+                </div>
+                <div class="soft-skills-wrap">
+                    <div class="soft-skill">
+                        <i class="fas fa-bolt"></i>
+                        <span data-lang-th>เรียนรู้ไว</span>
+                        <span data-lang-en>Fast Learner</span>
+                    </div>
+                    <div class="soft-skill">
+                        <i class="fas fa-people-group"></i>
+                        <span data-lang-th>ทำงานเป็นทีม</span>
+                        <span data-lang-en>Teamwork</span>
+                    </div>
+                    <div class="soft-skill">
+                        <i class="fas fa-comments"></i>
+                        <span data-lang-th>สื่อสารดี</span>
+                        <span data-lang-en>Communication</span>
+                    </div>
+                    <div class="soft-skill">
+                        <i class="fas fa-seedling"></i>
+                        <span data-lang-th>ใฝ่เรียนรู้</span>
+                        <span data-lang-en>Growth Mindset</span>
+                    </div>
+                    <div class="soft-skill">
+                        <i class="fas fa-puzzle-piece"></i>
+                        <span data-lang-th>แก้ปัญหาเก่ง</span>
+                        <span data-lang-en>Problem Solving</span>
+                    </div>
+                    <div class="soft-skill">
+                        <i class="fas fa-clock"></i>
+                        <span data-lang-th>จัดการเวลาดี</span>
+                        <span data-lang-en>Time Management</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer class="footer">
+    <div class="footer-glow"></div>
+    <div class="footer-links">
+        <a href="https://github.com/Mightycgm" target="_blank" title="GitHub" id="footer-gh"><i class="fab fa-github"></i></a>
+        <a href="mailto:Nachasil.naken03@gmail.com" title="Email" id="footer-email"><i class="fas fa-envelope"></i></a>
+        <a href="tel:0623948480" title="Phone" id="footer-phone"><i class="fas fa-phone"></i></a>
+    </div>
+    <p>© 2026 Nachasil Naken · Built with HTML, CSS & JavaScript</p>
+    <p style="margin-top:4px; color:var(--text-muted);">
+        <span data-lang-th>กรุงเทพมหานคร, ประเทศไทย</span>
+        <span data-lang-en>Bangkok, Thailand</span>
+    </p>
+</footer>
+
+<!-- ═══════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════ -->
+<script>
+    /* ── Language Toggle ── */
+    const langBtn = document.getElementById('lang-btn');
+    let lang = 'th';
+    langBtn.addEventListener('click', () => {
+        lang = lang === 'th' ? 'en' : 'th';
+        document.body.classList.toggle('lang-en', lang === 'en');
+        langBtn.textContent = lang === 'th' ? 'TH' : 'EN';
+    });
+
+    /* ── Mobile Menu ── */
+    const mobBtn  = document.getElementById('mob-btn');
+    const navLinks = document.getElementById('navLinks');
+    mobBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a =>
+        a.addEventListener('click', () => navLinks.classList.remove('open'))
+    );
+
+    /* ── Scroll Reveal ── */
+    const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add('visible');
         });
+    }, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
 
-        // ──────────────────────────────────
-        // Language Toggle
-        // ──────────────────────────────────
-        const langToggle = document.getElementById('lang-toggle');
-        let currentLang = 'th';
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        langToggle.addEventListener('click', () => {
-            currentLang = currentLang === 'th' ? 'en' : 'th';
-            langToggle.textContent = currentLang === 'th' ? 'EN' : 'TH';
+    /* ── Active Nav on Scroll ── */
+    const sections   = document.querySelectorAll('section[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a');
 
-            document.querySelectorAll('[data-th][data-en]').forEach(el => {
-                el.innerHTML = el.getAttribute(`data-${currentLang}`);
-            });
+    const activeObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                const id = e.target.getAttribute('id');
+                navAnchors.forEach(a => {
+                    a.classList.toggle('active', a.getAttribute('href') === `#${id}`);
+                });
+            }
         });
+    }, { threshold: 0.4 });
 
-        // ──────────────────────────────────
-        // Mobile Menu Toggle
-        // ──────────────────────────────────
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navLinks = document.getElementById('navLinks');
+    sections.forEach(s => activeObserver.observe(s));
 
-        mobileMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Close mobile menu when a link is clicked
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // ──────────────────────────────────
-        // Scroll Reveal Animations
-        // ──────────────────────────────────
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -40px 0px'
-        });
-
-        document.querySelectorAll('.reveal').forEach(el => {
-            revealObserver.observe(el);
-        });
-
-        // ──────────────────────────────────
-        // Navbar active link on scroll
-        // ──────────────────────────────────
-        const sections = document.querySelectorAll('section[id], .hero');
-        const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                if (scrollY >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navAnchors.forEach(a => {
-                a.style.background = '';
-                a.style.color = '';
-                if (a.getAttribute('href') === `#${current}`) {
-                    a.style.background = 'var(--accent-soft)';
-                    a.style.color = 'var(--accent)';
-                }
-            });
-        });
-    </script>
+    /* ── Typed effect for hero title ── */
+    const typedEl = document.querySelector('.typed-text');
+    if (typedEl) {
+        const texts = [
+            'Full-Stack Web Developer',
+            'IT Student @ Sripatum University',
+            'React · Next.js · Python · Linux',
+        ];
+        let ti = 0, ci = 0, deleting = false;
+        function typeLoop() {
+            const current = texts[ti];
+            if (!deleting) {
+                typedEl.querySelectorAll('[data-lang-th], [data-lang-en]').forEach(el => {
+                    el.textContent = current.slice(0, ci + 1);
+                });
+                ci++;
+                if (ci === current.length) { deleting = true; setTimeout(typeLoop, 2000); return; }
+            } else {
+                typedEl.querySelectorAll('[data-lang-th], [data-lang-en]').forEach(el => {
+                    el.textContent = current.slice(0, ci - 1);
+                });
+                ci--;
+                if (ci === 0) { deleting = false; ti = (ti + 1) % texts.length; }
+            }
+            setTimeout(typeLoop, deleting ? 45 : 75);
+        }
+        setTimeout(typeLoop, 800);
+    }
+</script>
 </body>
-
 </html>
-
